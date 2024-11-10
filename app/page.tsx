@@ -1,10 +1,10 @@
 import {GhContextProvider} from "@/lib/context/gh-context";
 import {Suspense} from "react";
-import {WorkflowList} from "@/components/workflows/workflow-list";
 import {LatestRelease} from "@/containers/latest-release";
 import {ReleaseHistory} from "@/containers/release-history";
 import {MyPullRequests} from "@/containers/my-pull-requests";
 import {MyJiraIssues} from "@/containers/my-jira-issues";
+import {WorkflowHistory} from "@/containers/workflow-history";
 
 export default async function Home() {
   return (
@@ -13,7 +13,7 @@ export default async function Home() {
         <div className={'grid grid-cols-3 gap-4'}>
           <MyPullRequests/>
           <MyJiraIssues/>
-          <WorkflowList/>
+          <WorkflowHistory/>
           <LatestRelease/>
           <ReleaseHistory/>
         </div>
