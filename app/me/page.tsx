@@ -4,7 +4,7 @@ import {GhContextProvider} from "@/lib/context/gh-context";
 import {Suspense} from "react";
 
 export default async function Home() {
-  return (<GhContextProvider>
+  return (<GhContextProvider owner={process.env.GH_REPO_OWNER!} repo={process.env.GH_REPO!}>
       <Suspense>
         <div className={'grid grid-cols-2 gap-4'}>
           <MyPullRequests/>
