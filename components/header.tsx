@@ -72,7 +72,9 @@ export const Header = () => {
               </div>
             </div>
             <div className="mt-3 px-2 space-y-1">
-              <SignOutButton className="block w-full text-left px-3 py-2"/>
+              <div className="block w-full text-left px-3 py-2">
+                <SignOutButton/>
+              </div>
             </div>
           </div>
         </div>
