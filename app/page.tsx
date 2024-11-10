@@ -8,7 +8,7 @@ import {MyJiraIssues} from "@/containers/my-jira-issues";
 
 export default async function Home() {
   return (
-    <GhContextProvider>
+    <GhContextProvider owner={process.env.GH_REPO_OWNER!} repo={process.env.GH_REPO!}>
       <Suspense>
         <div className={'grid grid-cols-3 gap-4'}>
           <MyPullRequests/>

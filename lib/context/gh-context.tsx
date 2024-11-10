@@ -8,16 +8,16 @@ export type GhContextType = {
 }
 
 export const GhContext = createContext<GhContextType>({
-  owner: 'Konova-AG',
-  repo: 'emi-app'
+  owner: '',
+  repo: ''
 });
 
 export const useGhContext = () => useContext(GhContext);
 
-export const GhContextProvider: FC<PropsWithChildren> = ({children}) => {
+export const GhContextProvider: FC<PropsWithChildren & { owner: string, repo: string }> = ({children, repo, owner}) => {
   return <GhContext.Provider value={{
-    owner: 'Konova-AG',
-    repo: 'emi-app'
+    owner,
+    repo,
   }}>
     {children}
   </GhContext.Provider>

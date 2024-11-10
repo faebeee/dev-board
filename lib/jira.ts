@@ -1,13 +1,12 @@
 import {Version3Client} from "jira.js";
 
 const client = new Version3Client({
-  host: 'https://konova.atlassian.net',
+  host: process.env.NEXT_PUBLIC_JIRA_HOST!,
   authentication: {
     basic: {
-      email: 'gianini@konova.ch',
+      email: process.env.JIRA_USER_MAIL!,
       apiToken: process.env.JIRA_ACCESS_TOKEN!,
     },
-//    personalAccessToken: process.env.JIRA_ACCESS_TOKEN!,
   },
 });
 
