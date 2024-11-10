@@ -4,10 +4,8 @@ import "./globals.css";
 import {Toaster} from "@/components/ui/sonner"
 import {
   ClerkProvider,
-  SignInButton,
   SignedIn,
   SignedOut,
-  UserButton
 } from '@clerk/nextjs'
 import {Login} from "@/components/login";
 

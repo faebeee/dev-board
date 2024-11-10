@@ -4,6 +4,7 @@ import {MyPullRequests} from "@/containers/my-pull-requests";
 import {MyJiraIssues} from "@/containers/my-jira-issues";
 import {WorkflowHistory} from "@/containers/workflow-history";
 import {Header} from "@/components/header";
+import {JiraIssueSearch} from "@/containers/jira-search";
 
 export default async function Home() {
   const dashboard = await import('../config.json');
@@ -13,6 +14,7 @@ export default async function Home() {
     'my-jira-issues': MyJiraIssues,
     'workflow-run': WorkflowHistory,
     'release-history': ReleaseHistory,
+    'jira-search': JiraIssueSearch,
   };
 
   return (

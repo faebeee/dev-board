@@ -1,7 +1,7 @@
 "use client";
 
 import {FC, ReactNode} from "react";
-import {Card, CardContent, CardHeader, CardTitle} from "../ui/card";
+import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "../ui/card";
 import {ScrollArea} from "@/components/ui/scroll-area";
 import {CheckCircle2, Circle, Clock, Flag, MessageCircleQuestion} from "lucide-react";
 import {Badge} from "@/components/ui/badge";
@@ -48,6 +48,7 @@ export const JiraIssueList: FC<{ issues: Issue[], title: ReactNode }> = ({issues
   return <Card>
     <CardHeader>
       <CardTitle>{title}</CardTitle>
+      <CardDescription>Total {issues?.length} issues</CardDescription>
     </CardHeader>
     <CardContent>
       <ScrollArea className="h-[450px]">
