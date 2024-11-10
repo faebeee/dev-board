@@ -19,10 +19,11 @@
       }
     },
     {
-      "id": "my-issues",
-      "widget": "my-jira-issues",
+      "id": "my-current-sprint-tasks",
+      "widget": "jira-search",
       "config": {
-        "title": "My Issues"
+        "title": "My issues in sprint",
+        "jql": "sprint in openSprints() and assignee = currentUser() and status != \"Done\""
       }
     },
     {
@@ -44,11 +45,10 @@
       }
     },
     {
-      "id": "my-current-sprint-tasks",
-      "widget": "jira-search",
+      "id": "my-issues",
+      "widget": "my-jira-issues",
       "config": {
-        "title": "My issues in sprint",
-        "jql": "sprint in openSprints() and assignee = currentUser() and status != \"Done\""
+        "title": "My Issues"
       }
     }
   ]
