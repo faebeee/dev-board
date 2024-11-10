@@ -1,0 +1,15 @@
+version: "3.7"
+
+services:
+  prod:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: dev-board
+    ports:
+      - "3100:3000"
+    env_file:
+      - .env
+
+volumes:
+  node_modules:
