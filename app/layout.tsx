@@ -9,6 +9,7 @@ import {
   SignedOut,
   UserButton
 } from '@clerk/nextjs'
+import {Login} from "@/components/login";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -40,7 +41,7 @@ export default function RootLayout({
 
       <main className='w-full'>
         <SignedOut>
-          <SignInButton/>
+          <Login/>
         </SignedOut>
         <SignedIn>
           {children}

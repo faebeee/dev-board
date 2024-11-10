@@ -1,17 +1,14 @@
 "use client";
 
 import {useState} from 'react'
-import {Bell, Menu, Search} from 'lucide-react'
+import {Menu} from 'lucide-react'
 import Link from 'next/link'
 import {Button} from '@/components/ui/button'
-import {Input} from '@/components/ui/input'
-
-import {Avatar, AvatarFallback, AvatarImage} from '@/components/ui/avatar'
 import {SignOutButton, UserButton, useUser} from "@clerk/nextjs";
 
 export const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const {isSignedIn, user, isLoaded} = useUser()
+  const {user} = useUser()
 
   return (
     <header className="bg-background border-b">
