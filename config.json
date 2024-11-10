@@ -1,0 +1,39 @@
+{
+  "title": "Dashboard",
+  "widgets": [
+    {
+      "id": "my-prs",
+      "widget": "my-pull-requests",
+      "config": {
+        "title": "My Pull-Requests",
+        "owner": "Konova-Ag",
+        "repo": "emi-app"
+      }
+    },
+    {
+      "id": "my-issues",
+      "widget": "my-jira-issues",
+      "config": {
+        "title": "My Issues"
+      }
+    },
+    {
+      "id": "actions",
+      "widget": "workflow-run",
+      "config": {
+        "title": "Workflows",
+        "owner": "Konova-Ag",
+        "repo": "emi-app"
+      }
+    },
+    {
+      "id": "releases",
+      "widget": "release-history",
+      "config": {
+        "title": "Releases",
+        "owner": "Konova-Ag",
+        "repo": "emi-app"
+      }
+    }
+  ]
+}

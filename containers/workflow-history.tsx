@@ -2,13 +2,13 @@
 
 import {GeneralApiData} from "@/containers/general-api-data";
 import {GH_API_OWNER_HEADER, GH_API_REPO_HEADER} from "@/app/api/github/types";
-import {useGhContext} from "@/lib/context/gh-context";
 import {Workflow} from "@/app/api/github/workflow/types";
 import {WorkflowList} from "@/components/workflows/workflow-list";
 import {toast} from "sonner";
+import {GHBasicProps} from "./types";
+import {FC} from "react";
 
-export const WorkflowHistory = () => {
-  const {owner, repo} = useGhContext()
+export const WorkflowHistory: FC<GHBasicProps & { title: string }> = ({owner, repo, title}) => {
 
   return <GeneralApiData<Workflow[]> endpoint={'/api/github/workflow'}
                                      identifier={'id'}
@@ -22,6 +22,6 @@ export const WorkflowHistory = () => {
                                        }
                                      }}
   >
-    {(runs) => (<WorkflowList runs={runs ?? []}/>)}
+    {(runs) => (<WorkflowList title={title} runs={runs ?? []}/>)}
   </GeneralApiData>;
 }

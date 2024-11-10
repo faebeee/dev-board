@@ -8,10 +8,10 @@ import {Badge} from "@/components/ui/badge";
 import {Workflow} from "@/app/api/github/workflow/types";
 
 
-export const WorkflowList: FC<{ runs: Workflow[] }> = ({runs}) => {
+export const WorkflowList: FC<{ runs: Workflow[], title: string }> = ({runs, title}) => {
   return <Card>
     <CardHeader>
-      <CardTitle>Workflows</CardTitle>
+      <CardTitle>{title}</CardTitle>
     </CardHeader>
     <CardContent>
       <ScrollArea className="h-[450px]">

@@ -8,10 +8,10 @@ import Markdown from "markdown-to-jsx";
 import {ScrollArea} from "@/components/ui/scroll-area";
 import {Release} from "@/app/api/github/release/types";
 
-export const ReleaseTimeline: FC<{ releases: Release[] }> = ({releases}) => {
+export const ReleaseTimeline: FC<{ releases: Release[], title: string }> = ({releases, title}) => {
   return <Card>
     <CardHeader>
-      <CardTitle>Releases</CardTitle>
+      <CardTitle>{title}</CardTitle>
     </CardHeader>
     <CardContent>
       <ScrollArea className="h-[450px]">
