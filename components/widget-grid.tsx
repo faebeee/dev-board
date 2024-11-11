@@ -6,6 +6,7 @@ import {WorkflowHistory} from "@/containers/workflow-history";
 import {JiraIssueSearch} from "@/containers/jira-search";
 import {Widget} from "@/types/widgets";
 import {PullRequestsReview} from "@/containers/pull-requests-review";
+import {RepoEvents} from "@/containers/repo-events";
 
 const map = {
   'my-pull-requests': MyPullRequests,
@@ -14,11 +15,12 @@ const map = {
   'workflow-run': WorkflowHistory,
   'release-history': ReleaseHistory,
   'jira-search': JiraIssueSearch,
+  'repo-events': RepoEvents,
 };
 
 
 export const WidgetGrid: FC<{ widgets: Widget[] }> = ({widgets}) => {
-  return <div className={'grid grid-cols-3 gap-4'}>
+  return <div className={'grid grid-cols-1 gap-4 md:grid-cols-2 2xl:grid-cols-3'}>
     {widgets.map(({config, id, widget}) => {
       // eslint-disable-next-line
       // @ts-ignore

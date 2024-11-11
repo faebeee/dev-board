@@ -29,6 +29,15 @@
         }
       },
       {
+        "id": "events",
+        "widget": "repo-events",
+        "config": {
+          "title": "Events",
+          "owner": "Konova-Ag",
+          "repo": "emi-app"
+        }
+      },
+      {
         "id": "ui-actions",
         "widget": "workflow-run",
         "config": {
