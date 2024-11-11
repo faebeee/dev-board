@@ -1,12 +1,12 @@
 "use client";
 
-import {useState} from 'react'
+import {FC, useState} from 'react'
 import {Menu} from 'lucide-react'
 import Link from 'next/link'
 import {Button} from '@/components/ui/button'
 import {SignOutButton, UserButton, useUser} from "@clerk/nextjs";
 
-export const Header = () => {
+export const Header: FC<{ links: { label: string, href: string }[] }> = ({links}) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const {user} = useUser()
 
@@ -37,6 +37,13 @@ export const Header = () => {
                     Home
                   </Link>
                 </li>
+                {links.map((link) => (
+                  <li key={link.href}>
+                    <Link href={link.href} className="text-muted-foreground hover:text-primary">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </nav>
           </div>

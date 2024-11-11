@@ -1,55 +1,141 @@
-{
-  "title": "Dashboard",
-  "widgets": [
-    {
-      "id": "my-prs",
-      "widget": "my-pull-requests",
-      "config": {
-        "title": "My Pull-Requests",
-        "owner": "Konova-Ag",
-        "repo": "emi-app"
+[
+  {
+    "id": "overview",
+    "title": "Overview",
+    "widgets": [
+      {
+        "id": "unassigned bugs",
+        "widget": "jira-search",
+        "config": {
+          "title": "Unassigned Bugs",
+          "jql": "sprint in openSprints() and assignee IS EMPTY and type = Bug"
+        }
+      },
+      {
+        "id": "app-actions",
+        "widget": "workflow-run",
+        "config": {
+          "title": "App Workflows",
+          "owner": "Konova-Ag",
+          "repo": "emi-app"
+        }
+      },
+      {
+        "id": "ui-actions",
+        "widget": "workflow-run",
+        "config": {
+          "title": "UI Workflows",
+          "owner": "Konova-Ag",
+          "repo": "emi-ui"
+        }
+      },
+      {
+        "id": "app-releases",
+        "widget": "release-history",
+        "config": {
+          "title": "APP Releases",
+          "owner": "Konova-Ag",
+          "repo": "emi-app"
+        }
+      },
+      {
+        "id": "ui-releases",
+        "widget": "release-history",
+        "config": {
+          "title": "UI Releases",
+          "owner": "Konova-Ag",
+          "repo": "emi-ui"
+        }
       }
-    },
-    {
-      "id": "unassigned bugs",
-      "widget": "jira-search",
-      "config": {
-        "title": "Unassigned Bugs",
-        "jql": "sprint in openSprints() and assignee IS EMPTY and type = Bug"
+    ]
+  },
+  {
+    "id": "emi-app",
+    "title": "EMI-App",
+    "widgets": [
+      {
+        "id": "my-prs",
+        "widget": "my-pull-requests",
+        "config": {
+          "title": "My Pull-Requests",
+          "owner": "Konova-Ag",
+          "repo": "emi-app"
+        }
+      },
+      {
+        "id": "unassigned bugs",
+        "widget": "jira-search",
+        "config": {
+          "title": "Unassigned Bugs",
+          "jql": "sprint in openSprints() and assignee IS EMPTY and type = Bug"
+        }
+      },
+      {
+        "id": "my-current-sprint-tasks",
+        "widget": "jira-search",
+        "config": {
+          "title": "My issues in sprint",
+          "jql": "sprint in openSprints() and assignee = currentUser() and status != \"Done\""
+        }
+      },
+      {
+        "id": "actions",
+        "widget": "workflow-run",
+        "config": {
+          "title": "Workflows",
+          "owner": "Konova-Ag",
+          "repo": "emi-app"
+        }
+      },
+      {
+        "id": "releases",
+        "widget": "release-history",
+        "config": {
+          "title": "Releases",
+          "owner": "Konova-Ag",
+          "repo": "emi-app"
+        }
+      },
+      {
+        "id": "my-issues",
+        "widget": "my-jira-issues",
+        "config": {
+          "title": "My Issues"
+        }
       }
-    },
-    {
-      "id": "my-current-sprint-tasks",
-      "widget": "jira-search",
-      "config": {
-        "title": "My issues in sprint",
-        "jql": "sprint in openSprints() and assignee = currentUser() and status != \"Done\""
+    ]
+  },
+  {
+    "id": "emi-ui",
+    "title": "EMI-UI",
+    "widgets": [
+      {
+        "id": "my-prs",
+        "widget": "my-pull-requests",
+        "config": {
+          "title": "My Pull-Requests",
+          "owner": "Konova-Ag",
+          "repo": "emi-ui"
+        }
+      },
+      {
+        "id": "actions",
+        "widget": "workflow-run",
+        "config": {
+          "title": "Workflows",
+          "owner": "Konova-Ag",
+          "repo": "emi-ui"
+        }
+      },
+      {
+        "id": "releases",
+        "widget": "release-history",
+        "config": {
+          "title": "Releases",
+          "owner": "Konova-Ag",
+          "repo": "emi-ui"
+        }
       }
-    },
-    {
-      "id": "actions",
-      "widget": "workflow-run",
-      "config": {
-        "title": "Workflows",
-        "owner": "Konova-Ag",
-        "repo": "emi-app"
-      }
-    },
-    {
-      "id": "releases",
-      "widget": "release-history",
-      "config": {
-        "title": "Releases",
-        "owner": "Konova-Ag",
-        "repo": "emi-app"
-      }
-    },
-    {
-      "id": "my-issues",
-      "widget": "my-jira-issues",
-      "config": {
-        "title": "My Issues"
-      }
-    }
-  ]
-}
+    ]
+  }
+]
