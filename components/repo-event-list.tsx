@@ -1,6 +1,6 @@
 "use client";
 
-import {FC, useEffect, useState} from 'react'
+import {FC} from 'react'
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card"
 import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar"
 import {
@@ -9,7 +9,6 @@ import {
   Star,
   GitFork,
   MessageSquare,
-  AlertCircle,
   CheckCircle,
   GitBranch
 } from 'lucide-react'
@@ -32,11 +31,6 @@ export const RepoEventList: FC<{ events: RepoEvent[], title: string }> = ({event
       default:
         return null
     }
-  }
-
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString)
-    return date.toLocaleDateString('en-US', {year: 'numeric', month: 'short', day: 'numeric'})
   }
 
   return (
@@ -81,33 +75,33 @@ export const RepoEventList: FC<{ events: RepoEvent[], title: string }> = ({event
 
 
                         {event.type === 'PullRequestReviewEvent' &&
-                          <a href={event.payload.review.html_url} target={'_blank'}>Reviewed PR
+                          <a href={event.payload.review?.html_url} target={'_blank'}>Reviewed PR
 
                             <Badge className="space-x-1 mx-1">
                               <GitBranch className="w-3 h-3"/>
-                              <span>{event.payload.pull_request.title}</span>
+                              <span>{event.payload.pull_request?.title}</span>
                             </Badge>
 
 
-                            {event.payload.review.state === 'approved' &&
+                            {event.payload.review?.state === 'approved' &&
                               <CheckCircle className="h-4 w-4 text-green-500"/>}
 
-                            {event.payload.review.state === 'pending' &&
+                            {event.payload.review?.state === 'pending' &&
                               <CheckCircle className="h-4 w-4 text-yellow-500"/>}
 
-                            {event.payload.review.state === 'declined' &&
+                            {event.payload.review?.state === 'declined' &&
                               <CheckCircle className="h-4 w-4 text-red-500"/>}
                           </a>}
 
                         {event.type === 'PullRequestEvent' &&
-                          <a href={event.payload.pull_request.html_url} target={'_blank'}>
+                          <a href={event.payload.pull_request?.html_url} target={'_blank'}>
                             {event.payload.action} <Badge className="space-x-1 mx-1">
                             <GitBranch className="w-3 h-3"/>
-                            <span>{event.payload.pull_request.title}</span>
+                            <span>{event.payload.pull_request?.title}</span>
                           </Badge>
                             into <Badge className="space-x-1 mx-1">
                             <GitPullRequest className="w-3 h-3"/>
-                            <span>{event.payload.pull_request.base.ref}</span>
+                            <span>{event.payload.pull_request?.base?.ref}</span>
                           </Badge>
                           </a>}
                   </span>
