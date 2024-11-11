@@ -3,9 +3,19 @@
 import {FC, useEffect, useState} from 'react'
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card"
 import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar"
-import {GitCommitHorizontal, GitPullRequest, Star, GitFork, MessageSquare, AlertCircle, CheckCircle} from 'lucide-react'
+import {
+  GitCommitHorizontal,
+  GitPullRequest,
+  Star,
+  GitFork,
+  MessageSquare,
+  AlertCircle,
+  CheckCircle,
+  GitBranch
+} from 'lucide-react'
 import {RepoEvent} from '@/app/api/github/event/types'
 import {ScrollArea} from "@/components/ui/scroll-area";
+import {Badge} from './ui/badge';
 
 
 export const RepoEventList: FC<{ events: RepoEvent[], title: string }> = ({events, title}) => {
@@ -13,8 +23,6 @@ export const RepoEventList: FC<{ events: RepoEvent[], title: string }> = ({event
     switch (eventType) {
       case 'PushEvent':
         return <GitCommitHorizontal className="h-4 w-4"/>
-      case 'PullRequestEvent':
-        return <GitPullRequest className="h-4 w-4"/>
       case 'WatchEvent':
         return <Star className="h-4 w-4"/>
       case 'ForkEvent':
@@ -22,7 +30,7 @@ export const RepoEventList: FC<{ events: RepoEvent[], title: string }> = ({event
       case 'IssueCommentEvent':
         return <MessageSquare className="h-4 w-4"/>
       default:
-        return <AlertCircle className="h-4 w-4"/>
+        return null
     }
   }
 
@@ -41,45 +49,73 @@ export const RepoEventList: FC<{ events: RepoEvent[], title: string }> = ({event
         <ScrollArea className="h-[450px]">
           <ul className="space-y-4">
             {events.map((event) => (
-              <li key={event.id} className="flex items-start space-x-4 p-4 bg-secondary rounded-lg">
-                <Avatar className="h-10 w-10">
-                  <AvatarImage src={event.actor.avatar_url} alt={event.actor.login}/>
-                  <AvatarFallback>{event.actor.login.slice(0, 2).toUpperCase()}</AvatarFallback>
-                </Avatar>
-                <div className="flex-1 space-y-1">
-                  <div className="flex items-center space-x-2">
-                    <span className="font-medium">{event.actor.login}</span>
-                    <span className="text-muted-foreground">{formatDate(event.created_at)}</span>
-                  </div>
-                  <p className="flex text-sm">
-                    {getEventIcon(event.type)}
-                    <span className="ml-2">
-                    {event.type === 'PushEvent' && `Pushed to ${event.payload.ref?.split('/').pop()}`}
+              <li key={event.id}>
+                <a href={event.payload.pull_request?.html_url} target={'_blank'}
+                   className="flex items-start space-x-4 p-4 bg-secondary rounded-lg">
+                  <Avatar className="h-10 w-10">
+                    <AvatarImage src={event.actor.avatar_url} alt={event.actor.login}/>
+                    <AvatarFallback>{event.actor.login.slice(0, 2).toUpperCase()}</AvatarFallback>
+                  </Avatar>
+                  <div className="flex-1 space-y-1">
+                    <div className="flex items-center space-x-2">
+                      <span className="font-medium">{event.actor.login}</span>
+                      <span
+                        className="text-muted-foreground text-sm">{new Date(event.created_at).toLocaleString()}</span>
+                    </div>
+                    <p className="flex text-sm">
+                      {getEventIcon(event.type)}
+                      <span className="ml-2">
 
-                      {event.type === 'DeleteEvent' && `Removed ${event.payload.ref_type} ${event.payload.ref}`}
+                    {event.type === 'PushEvent' && <>
+                      Pushed to
+                      <Badge className="space-x-1 ml-1">
+                        <GitPullRequest className="w-3 h-3"/>
+                        <span>{event.payload.ref}</span>
+                      </Badge>
+                    </>}
+
+                        {event.type === 'DeleteEvent' && <>Removed <Badge className="space-x-1 mx-1">
+                          <GitBranch className="w-3 h-3"/>
+                          <span>{event.payload.ref}</span>
+                        </Badge></>}
 
 
-                      {event.type === 'PullRequestReviewEvent' &&
-                        <a href={event.payload.review.html_url} target={'_blank'}>Reviewed PR
-                          #{event.payload.pull_request.base.ref}
+                        {event.type === 'PullRequestReviewEvent' &&
+                          <a href={event.payload.review.html_url} target={'_blank'}>Reviewed PR
 
-                          {event.payload.review.state === 'approved' &&
-                            <CheckCircle className="h-4 w-4 text-green-500"/>}
+                            <Badge className="space-x-1 mx-1">
+                              <GitBranch className="w-3 h-3"/>
+                              <span>{event.payload.pull_request.title}</span>
+                            </Badge>
 
-                          {event.payload.review.state === 'pending' &&
-                            <CheckCircle className="h-4 w-4 text-yellow-500"/>}
 
-                          {event.payload.review.state === 'declined' &&
-                            <CheckCircle className="h-4 w-4 text-red-500"/>}
-                        </a>}
+                            {event.payload.review.state === 'approved' &&
+                              <CheckCircle className="h-4 w-4 text-green-500"/>}
 
-                      {event.type === 'PullRequestEvent' &&
-                        <a href={event.payload.pull_request.html_url} target={'_blank'}>{event.payload.action} pull
-                          request #{event.payload.pull_request.base.ref}</a>}
+                            {event.payload.review.state === 'pending' &&
+                              <CheckCircle className="h-4 w-4 text-yellow-500"/>}
+
+                            {event.payload.review.state === 'declined' &&
+                              <CheckCircle className="h-4 w-4 text-red-500"/>}
+                          </a>}
+
+                        {event.type === 'PullRequestEvent' &&
+                          <a href={event.payload.pull_request.html_url} target={'_blank'}>
+                            {event.payload.action} <Badge className="space-x-1 mx-1">
+                            <GitBranch className="w-3 h-3"/>
+                            <span>{event.payload.pull_request.title}</span>
+                          </Badge>
+                            into <Badge className="space-x-1 mx-1">
+                            <GitPullRequest className="w-3 h-3"/>
+                            <span>{event.payload.pull_request.base.ref}</span>
+                          </Badge>
+                          </a>}
                   </span>
-                  </p>
-                  <p className="text-sm text-muted-foreground">{event.repo.name}</p>
-                </div>
+                    </p>
+
+                    <p className="text-sm text-muted-foreground">{event.repo.name}</p>
+                  </div>
+                </a>
               </li>
             ))}
           </ul>
