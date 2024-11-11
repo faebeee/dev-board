@@ -2,7 +2,7 @@
 
 import {FC, ReactNode} from "react";
 import {Avatar} from "../avatar";
-import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
+import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
 import {Badge} from "@/components/ui/badge"
 import {ScrollArea} from "@/components/ui/scroll-area"
 import {GitPullRequest} from "lucide-react";
@@ -15,6 +15,7 @@ export const PrList: FC<{
   return <Card>
     <CardHeader>
       <CardTitle>{title}</CardTitle>
+      <CardDescription>Total {pullRequest?.length} Pull-Requests</CardDescription>
     </CardHeader>
     <CardContent>
       <ScrollArea className="h-[450px]">
@@ -28,6 +29,7 @@ export const PrList: FC<{
                 </p>
                 <div className="flex items-center space-x-2">
                   <GitPullRequest className="w-4 h-4"/>
+                  {pr.draft && <Badge variant={pr.state === 'open' ? 'default' : 'secondary'}>Draft</Badge>}
                   <Badge variant={pr.state === 'open' ? 'default' : 'secondary'}>
                     {pr.state}
                   </Badge>

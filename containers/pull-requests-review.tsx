@@ -8,8 +8,8 @@ import {PullRequest} from "@/app/api/github/pr/types";
 import {GHBasicProps} from "@/containers/types";
 import {FC} from "react";
 
-export const MyPullRequests: FC<{ title: string } & GHBasicProps> = ({title, owner, repo}) => {
-  return <GeneralApiData<PullRequest[]> endpoint={'/api/github/pr/my'}
+export const PullRequestsReview: FC<{ title: string } & GHBasicProps> = ({title, owner, repo}) => {
+  return <GeneralApiData<PullRequest[]> endpoint={'/api/github/pr'}
                                         fetchInit={{
                                           headers: {
                                             [GH_API_OWNER_HEADER]: owner,

@@ -54,6 +54,15 @@
     "title": "EMI-App",
     "widgets": [
       {
+        "id": "prs-to-review",
+        "widget": "pull-requests-to-review",
+        "config": {
+          "title": "Pull-Requests to review",
+          "owner": "Konova-Ag",
+          "repo": "emi-app"
+        }
+      },
+      {
         "id": "my-prs",
         "widget": "my-pull-requests",
         "config": {
@@ -109,6 +118,15 @@
     "id": "emi-ui",
     "title": "EMI-UI",
     "widgets": [
+      {
+        "id": "prs-to-review",
+        "widget": "pull-requests-to-review",
+        "config": {
+          "title": "Pull-Requests to review",
+          "owner": "Konova-Ag",
+          "repo": "emi-ui"
+        }
+      },
       {
         "id": "my-prs",
         "widget": "my-pull-requests",

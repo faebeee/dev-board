@@ -5,9 +5,11 @@ import {MyJiraIssues} from "@/containers/my-jira-issues";
 import {WorkflowHistory} from "@/containers/workflow-history";
 import {JiraIssueSearch} from "@/containers/jira-search";
 import {Widget} from "@/types/widgets";
+import {PullRequestsReview} from "@/containers/pull-requests-review";
 
 const map = {
   'my-pull-requests': MyPullRequests,
+  'pull-requests-to-review': PullRequestsReview,
   'my-jira-issues': MyJiraIssues,
   'workflow-run': WorkflowHistory,
   'release-history': ReleaseHistory,

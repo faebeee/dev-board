@@ -1,4 +1,10 @@
-export type WidgetComponent = 'my-jira-issues' | 'my-pull-requests' | 'jira-search' | 'workflow-run' | 'release-history'
+export type WidgetComponent =
+  'my-jira-issues'
+  | 'my-pull-requests'
+  | 'pull-requests-to-review'
+  | 'jira-search'
+  | 'workflow-run'
+  | 'release-history'
 
 export type Widget = {
   id: string;
