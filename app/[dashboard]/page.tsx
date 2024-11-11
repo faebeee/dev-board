@@ -5,9 +5,10 @@ import {WidgetGrid} from "@/components/widget-grid";
 import {Dashboard} from "@/types/widgets";
 import {notFound} from "next/navigation";
 
-export default async function Home({params}: { params: { dashboard: string } }) {
+export default async function Home({params}: { params: Promise<{ dashboard: string }> }) {
   const dashboards = ((await import('../../config.json')).default as Dashboard[]);
-  const dashboard = dashboards.find(d => d.id === params.dashboard);
+  const dashboardToFind = (await params).dashboard;
+  const dashboard = dashboards.find(d => d.id === dashboardToFind);
   if (!dashboard) {
     notFound();
     return null;
