@@ -12,6 +12,14 @@
         }
       },
       {
+        "id": "ready-to-deploy",
+        "widget": "jira-search",
+        "config": {
+          "title": "Issues to deploy",
+          "jql": "status = \"Ready for Release\" ORDER BY created DESC"
+        }
+      },
+      {
         "id": "app-actions",
         "widget": "workflow-run",
         "config": {
@@ -72,37 +80,19 @@
         }
       },
       {
-        "id": "unassigned bugs",
-        "widget": "jira-search",
-        "config": {
-          "title": "Unassigned Bugs",
-          "jql": "sprint in openSprints() and assignee IS EMPTY and type = Bug"
-        }
-      },
-      {
         "id": "my-current-sprint-tasks",
         "widget": "jira-search",
         "config": {
           "title": "My issues in sprint",
-          "jql": "sprint in openSprints() and assignee = currentUser() and status != \"Done\""
+          "jql": "sprint in openSprints() and assignee = currentUser() and status IN (Backlog, \"In Progress\", \"In Review\", Open, Ready, Todo) ORDER BY status DESC"
         }
       },
       {
-        "id": "actions",
-        "widget": "workflow-run",
+        "id": "my-todos",
+        "widget": "jira-search",
         "config": {
-          "title": "Workflows",
-          "owner": "Konova-Ag",
-          "repo": "emi-app"
-        }
-      },
-      {
-        "id": "releases",
-        "widget": "release-history",
-        "config": {
-          "title": "Releases",
-          "owner": "Konova-Ag",
-          "repo": "emi-app"
+          "title": "My todos",
+          "jql": "status IN (Backlog, \"In Progress\", \"In Review\", Open, Ready, Todo) AND assignee = currentUser() ORDER BY status DESC"
         }
       },
       {
