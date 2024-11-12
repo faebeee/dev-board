@@ -6,7 +6,7 @@ import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/compo
 import {Badge} from "@/components/ui/badge"
 import {ScrollArea} from "@/components/ui/scroll-area"
 import {PullRequest, PullRequestReview} from "@/app/api/github/pr/types";
-import {CheckCircle, GitBranch, GitPullRequestArrow} from "lucide-react";
+import {CheckCircle, GitPullRequestArrow} from "lucide-react";
 import {GeneralApiData} from "@/containers/general-api-data";
 import {GH_API_OWNER_HEADER, GH_API_REPO_HEADER} from "@/app/api/github/types";
 
@@ -45,7 +45,7 @@ export const PrList: FC<{
                     {(reviews) => <>{reviews?.[0]?.state === 'APPROVED' &&
                       <CheckCircle className={'text-green-500 w-4 h-4'}/>}</>}
                   </GeneralApiData>
-                 
+
                   <Badge variant="secondary" className="hidden sm:flex items-center space-x-1">
                     <GitPullRequestArrow className="w-3 h-3"/>
                     <span>{pr.base.ref}</span>
