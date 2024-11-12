@@ -20,6 +20,23 @@
         }
       },
       {
+        "id": "current-sprint-tasks",
+        "widget": "jira-search",
+        "config": {
+          "title": "Unstarted in sprint",
+          "jql": "sprint in openSprints() and status IN (Open, Ready, Todo) ORDER BY status DESC"
+        }
+      },
+      {
+        "id": "all-prs",
+        "widget": "all-pull-requests",
+        "config": {
+          "title": "Pull-Requests",
+          "owner": "Konova-Ag",
+          "repo": "emi-app"
+        }
+      },
+      {
         "id": "jira-releases",
         "widget": "jira-release-list",
         "config": {
@@ -44,15 +61,6 @@
           "owner": "Konova-Ag",
           "repo": "emi-app"
         }
-      },
-      {
-        "id": "ui-releases",
-        "widget": "release-history",
-        "config": {
-          "title": "UI Releases",
-          "owner": "Konova-Ag",
-          "repo": "emi-ui"
-        }
       }
     ]
   },
@@ -60,6 +68,15 @@
     "id": "emi-app",
     "title": "EMI-App",
     "widgets": [
+      {
+        "id": "all-my-prs",
+        "widget": "my-pull-requests",
+        "config": {
+          "title": "My Pull-Requests",
+          "owner": "Konova-Ag",
+          "repo": "emi-app"
+        }
+      },
       {
         "id": "prs-to-review",
         "widget": "pull-requests-to-review",
@@ -70,10 +87,10 @@
         }
       },
       {
-        "id": "my-prs",
-        "widget": "my-pull-requests",
+        "id": "events",
+        "widget": "repo-events",
         "config": {
-          "title": "My Pull-Requests",
+          "title": "Events",
           "owner": "Konova-Ag",
           "repo": "emi-app"
         }
@@ -95,10 +112,21 @@
         }
       },
       {
-        "id": "my-issues",
-        "widget": "my-jira-issues",
+        "id": "actions",
+        "widget": "workflow-run",
         "config": {
-          "title": "My Issues"
+          "title": "Workflows",
+          "owner": "Konova-Ag",
+          "repo": "emi-app"
+        }
+      },
+      {
+        "id": "releases",
+        "widget": "release-history",
+        "config": {
+          "title": "Releases",
+          "owner": "Konova-Ag",
+          "repo": "emi-app"
         }
       }
     ]
@@ -139,6 +167,15 @@
         "widget": "release-history",
         "config": {
           "title": "Releases",
+          "owner": "Konova-Ag",
+          "repo": "emi-ui"
+        }
+      },
+      {
+        "id": "events",
+        "widget": "repo-events",
+        "config": {
+          "title": "Events",
           "owner": "Konova-Ag",
           "repo": "emi-ui"
         }

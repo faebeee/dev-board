@@ -1,7 +1,5 @@
 import {getGithub} from "@/lib/gh";
 import {GH_API_OWNER_HEADER, GH_API_REPO_HEADER} from "@/app/api/github/types";
-import {getUser} from "@/lib/get-user";
-import {uniqBy} from "lodash";
 
 
 export async function GET(request: Request) {
@@ -11,9 +9,5 @@ export async function GET(request: Request) {
   });
 
   const prs = response.data;
-  const user = await getUser();
-
-  const mineToReview = prs.filter((pr) => pr.requested_reviewers?.some((reviewer) => reviewer.id === user.id));
-
-  return Response.json(uniqBy([...mineToReview], (pr) => pr.id));
+  return Response.json(prs);
 }

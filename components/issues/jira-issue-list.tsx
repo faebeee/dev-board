@@ -56,8 +56,8 @@ export const JiraIssueList: FC<{ issues: Issue[], title: ReactNode }> = ({issues
           {issues.map((task) => (<div key={task.key}>
               <a target="_blank" href={`https://konova.atlassian.net/browse/${task.key}`}>
                 <li className="flex items-center space-x-4 rounded-md border p-4">
-                  <Avatar className="h-10 w-10" src={task.fields.creator.avatarUrls?.['48x48']}
-                          name={task.fields.creator.displayName}/>
+                  <Avatar className="h-10 w-10" src={task.fields.assignee?.avatarUrls?.['48x48']}
+                          name={task.fields.assignee?.displayName ?? '?'}/>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between">
                       <p className="text-sm font-medium text-gray-900 truncate">
@@ -65,10 +65,14 @@ export const JiraIssueList: FC<{ issues: Issue[], title: ReactNode }> = ({issues
                       </p>
                       {getPriorityBadge(task.fields.priority.name)}
                     </div>
-                    <div className="flex items-center mt-1">
+                    <div className="flex gap-2 items-center mt-1">
+                      <Avatar className="h-4 w-4" src={task.fields.creator?.avatarUrls?.['48x48']}
+                              name={task.fields.creator?.displayName ?? '?'}/>
                       <span className="flex-shrink-0 text-xs text-gray-500 mr-2" aria-hidden="true">#{task.key}</span>
-                      {getStatusIcon(task.fields.status.name as Task['status'])}
-                      <span className="ml-1 text-xs text-gray-500">{task.fields.status.name}</span>
+                      <div className="flex items-center">
+                        {getStatusIcon(task.fields.status.name as Task['status'])}
+                        <span className="ml-1 text-xs text-gray-500">{task.fields.status.name}</span>
+                      </div>
                     </div>
                   </div>
                 </li>

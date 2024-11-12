@@ -56,7 +56,7 @@ export const RepoEventList: FC<{ events: RepoEvent[], title: string }> = ({event
                       <span
                         className="text-muted-foreground text-sm">{new Date(event.created_at).toLocaleString()}</span>
                     </div>
-                    <p className="flex text-sm">
+                    <div className="flex text-sm">
                       {getEventIcon(event.type)}
                       <span className="ml-2">
 
@@ -105,7 +105,7 @@ export const RepoEventList: FC<{ events: RepoEvent[], title: string }> = ({event
                           </Badge>
                           </a>}
                   </span>
-                    </p>
+                    </div>
 
                     <p className="text-sm text-muted-foreground">{event.repo.name}</p>
                   </div>
