@@ -7,6 +7,7 @@ import {JiraIssueSearch} from "@/containers/jira-search";
 import {Widget} from "@/types/widgets";
 import {PullRequestsReview} from "@/containers/pull-requests-review";
 import {RepoEvents} from "@/containers/repo-events";
+import {JiraRelease} from "@/containers/jira-release";
 
 const map = {
   'my-pull-requests': MyPullRequests,
@@ -16,6 +17,7 @@ const map = {
   'release-history': ReleaseHistory,
   'jira-search': JiraIssueSearch,
   'repo-events': RepoEvents,
+  'jira-release-list': JiraRelease,
 };
 
 

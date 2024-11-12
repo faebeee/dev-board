@@ -20,6 +20,14 @@
         }
       },
       {
+        "id": "jira-releases",
+        "widget": "jira-release-list",
+        "config": {
+          "title": "Jira Releases",
+          "project": "EMI"
+        }
+      },
+      {
         "id": "app-actions",
         "widget": "workflow-run",
         "config": {
