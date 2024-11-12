@@ -28,30 +28,12 @@
         }
       },
       {
-        "id": "app-actions",
-        "widget": "workflow-run",
-        "config": {
-          "title": "App Workflows",
-          "owner": "Konova-Ag",
-          "repo": "emi-app"
-        }
-      },
-      {
         "id": "events",
         "widget": "repo-events",
         "config": {
           "title": "Events",
           "owner": "Konova-Ag",
           "repo": "emi-app"
-        }
-      },
-      {
-        "id": "ui-actions",
-        "widget": "workflow-run",
-        "config": {
-          "title": "UI Workflows",
-          "owner": "Konova-Ag",
-          "repo": "emi-ui"
         }
       },
       {
