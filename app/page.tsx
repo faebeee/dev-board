@@ -1,11 +1,10 @@
-import {Suspense} from "react";
-
-import {Header} from "@/components/header";
-import {WidgetGrid} from "@/components/widget-grid";
-import {Dashboard} from "@/types/widgets";
+import { Header } from '@/components/header';
+import { WidgetGrid } from '@/components/widget-grid';
+import { getConfig } from '@/lib/get-config';
+import { Suspense } from 'react';
 
 export default async function Home() {
-  const dashboards = ((await import('../config.json')).default as Dashboard[]);
+  const dashboards = await getConfig();
 
   return (
     <>
