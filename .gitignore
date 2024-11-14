@@ -40,5 +40,5 @@ yarn-error.log*
 next-env.d.ts
 .fleet
 .idea
-./data
-./data/config.json
+data
+data/config.json
