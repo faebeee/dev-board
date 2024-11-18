@@ -3,10 +3,10 @@ import {get} from '@vercel/edge-config';
 
 
 export const getConfig = async () => {
-    const dashboards = await get('dashboards') as Dashboard[];
-    if (!dashboards) {
-      throw new Error('Config is missing')
-    }
+  const dashboards = await get('dashboards') as Dashboard[];
+  if (!dashboards) {
+    throw new Error('Config is missing')
+  }
 
-    return dashboards;
+  return dashboards;
 }
