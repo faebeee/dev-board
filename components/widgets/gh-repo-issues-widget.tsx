@@ -3,12 +3,12 @@
 import { RepoIssue } from '@/app/api/github/issues/types';
 import { GH_API_OWNER_HEADER, GH_API_REPO_HEADER } from '@/app/api/github/types';
 import { IssueList, IssueStatus } from '@/components/issues/issue-list';
-import { GeneralApiData } from '@/containers/general-api-data';
-import { GHBasicProps } from '@/containers/types';
+import { GeneralApiData } from '@/components/widgets/general-api-data';
+import { GHBasicProps } from '@/components/widgets/types';
 import { FC } from 'react';
 import { toast } from 'sonner';
 
-export const GhRepoIssues: FC<{title: string} & GHBasicProps> = ({ title, owner, repo }) => {
+export const GhRepoIssuesWidget: FC<{title: string} & GHBasicProps> = ({ title, owner, repo }) => {
   return <GeneralApiData<RepoIssue[]> endpoint={'/api/github/issues'}
     fetchInit={{
       headers: {

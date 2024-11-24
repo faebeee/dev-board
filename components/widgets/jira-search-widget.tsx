@@ -1,7 +1,7 @@
 'use client';
 
 import { IssueList, IssuePrio, IssueStatus } from '@/components/issues/issue-list';
-import { GeneralApiData } from '@/containers/general-api-data';
+import { GeneralApiData } from '@/components/widgets/general-api-data';
 import { Issue } from 'jira.js/out/version3/models';
 import { FC } from 'react';
 import { toast } from 'sonner';

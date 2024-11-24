@@ -7,7 +7,7 @@ import {Badge} from "@/components/ui/badge"
 import {ScrollArea} from "@/components/ui/scroll-area"
 import {PullRequest, PullRequestReview} from "@/app/api/github/pr/types";
 import {CheckCircle, GitPullRequestArrow} from "lucide-react";
-import {GeneralApiData} from "@/containers/general-api-data";
+import {GeneralApiData} from "@/components/widgets/general-api-data";
 import {GH_API_OWNER_HEADER, GH_API_REPO_HEADER} from "@/app/api/github/types";
 
 export const PrList: FC<{

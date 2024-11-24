@@ -1,27 +1,25 @@
-import { GhRepoIssues } from '@/containers/gh-repo-issues';
+import { GhRepoIssuesWidget } from '@/components/widgets/gh-repo-issues-widget';
 import {FC} from "react";
-import {ReleaseHistory} from "@/containers/release-history";
-import {MyPullRequests} from "@/containers/my-pull-requests";
-import {MyJiraIssues} from "@/containers/my-jira-issues";
-import {WorkflowHistory} from "@/containers/workflow-history";
-import {JiraIssueSearch} from "@/containers/jira-search";
+import {GithubReleaseHistoryWidget} from "@/components/widgets/github-release-history-widget";
+import {MyPullRequestsWidget} from "@/components/widgets/my-pull-requests-widget";
+import {GithubWorkflowHistoryWidget} from "@/components/widgets/github-workflow-history-widget";
+import {JiraIssueSearch} from "@/components/widgets/jira-search-widget";
 import {Widget} from "@/types/widgets";
-import {PullRequestsReview} from "@/containers/pull-requests-review";
-import {RepoEvents} from "@/containers/repo-events";
-import {JiraRelease} from "@/containers/jira-release";
-import {AllPullRequests} from "@/containers/all-pull-requests";
+import {PullRequestsReviewWidget} from "@/components/widgets/pull-requests-review-widget";
+import {GithubRepoEventsWidget} from "@/components/widgets/github-repo-events-widget";
+import {JiraReleaseWidget} from "@/components/widgets/jira-release-widget";
+import {AllPullRequestsWidget} from "@/components/widgets/all-pull-requests-widget";
 
 const map = {
-  'my-pull-requests': MyPullRequests,
-  'pull-requests-to-review': PullRequestsReview,
-  'my-jira-issues': MyJiraIssues,
-  'workflow-run': WorkflowHistory,
-  'release-history': ReleaseHistory,
+  'my-pull-requests': MyPullRequestsWidget,
+  'pull-requests-to-review': PullRequestsReviewWidget,
+  'workflow-run': GithubWorkflowHistoryWidget,
+  'release-history': GithubReleaseHistoryWidget,
   'jira-search': JiraIssueSearch,
-  'repo-events': RepoEvents,
-  'jira-release-list': JiraRelease,
-  'all-pull-requests': AllPullRequests,
-  'github-issues': GhRepoIssues,
+  'repo-events': GithubRepoEventsWidget,
+  'jira-release-list': JiraReleaseWidget,
+  'all-pull-requests': AllPullRequestsWidget,
+  'github-issues': GhRepoIssuesWidget,
 };
 
 
