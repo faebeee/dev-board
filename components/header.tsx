@@ -49,6 +49,9 @@ export const Header: FC<{ links: { label: string, href: string }[] }> = ({links}
           </div>
           <div className="hidden md:flex items-center space-x-4">
             <div className="flex items-center space-x-4">
+              <Link href={'/settings'} className="text-muted-foreground hover:text-primary">
+                Settings
+              </Link>
               <UserButton/>
               <div className="hidden lg:block">
                 <p className="text-sm font-medium">{user?.fullName}</p>

@@ -1,3 +1,4 @@
+import { GhRepoIssues } from '@/containers/gh-repo-issues';
 import {FC} from "react";
 import {ReleaseHistory} from "@/containers/release-history";
 import {MyPullRequests} from "@/containers/my-pull-requests";
@@ -20,6 +21,7 @@ const map = {
   'repo-events': RepoEvents,
   'jira-release-list': JiraRelease,
   'all-pull-requests': AllPullRequests,
+  'github-issues': GhRepoIssues,
 };
 
 
