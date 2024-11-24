@@ -6,12 +6,12 @@
 ## Config
 ```json
 {
-        "id": "UNIQUE ID",
-        "widget": "all-pull-requests",
-        "config": {
-          "title": "Pull-Requests",
-          "owner": "Konova-Ag",
-          "repo": "emi-app"
-        }
-      }
+    "id": "UNIQUE ID",
+    "widget": "all-pull-requests",
+    "config": {
+      "title": "Pull-Requests",
+      "owner": "XXXX",
+      "repo": "XXXX"
+    }
+}
 ```

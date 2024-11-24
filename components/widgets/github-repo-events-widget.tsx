@@ -8,7 +8,7 @@ import {toast} from "sonner";
 import {RepoEventList} from "@/components/repo-event-list";
 import {RepoEvent} from "@/app/api/github/event/types";
 
-export const RepoEvents: FC<{ title: string } & GHBasicProps> = ({title, owner, repo}) => {
+export const GithubRepoEventsWidget: FC<{ title: string } & GHBasicProps> = ({title, owner, repo}) => {
   return <GeneralApiData<RepoEvent[]> endpoint={'/api/github/event'}
                                       fetchInit={{
                                         headers: {
