@@ -12,11 +12,12 @@ export const getConfig = async (): Promise<ConfigType> => {
 
     return dashboards;
   } catch {
-  }
-
-  try {
-    return (await import('../data/config.json')).default;
-  } catch {
     return [];
   }
+
+  // try {
+  //   return (await import('../data/config.json')).default;
+  // } catch {
+  //   return [];
+  // }
 };
