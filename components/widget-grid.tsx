@@ -8,7 +8,7 @@ import { JiraIssueSearch } from '@/components/widgets/jira-search-widget';
 import { MyPullRequestsWidget } from '@/components/widgets/my-pull-requests-widget';
 import { PullRequestsReviewWidget } from '@/components/widgets/pull-requests-review-widget';
 import { VercelDeploymentWidget } from '@/components/widgets/vercel-deployment-widget';
-import { Widget } from '@/types/widgets';
+import { Widget } from '@/lib/types/widget';
 import { FC } from 'react';
 
 const map = {

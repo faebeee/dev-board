@@ -1,4 +1,4 @@
-import { array, InferType, object, string } from 'yup';
+import { array, object, string } from 'yup';
 
 
 export const widgetTypes = [
@@ -16,7 +16,7 @@ export type WidgetType = typeof widgetTypes[number];
 
 const widgetSchema = object({
   id: string().required(),
-  widget: string().oneOf(widgetTypes),
+  widget: string().oneOf(widgetTypes).required(),
   config: object()
   .when('widget', {
     is: (widget: string) => widget === 'jira-search',
@@ -46,7 +46,3 @@ const dashboardSchema = object({
 
 
 export const configSchema = array().of(dashboardSchema);
-
-export type ConfigType = InferType<typeof configSchema>;
-export type DashboardType = InferType<typeof dashboardSchema>;
-

@@ -5,7 +5,7 @@ import { Workflow } from '@/app/api/github/workflow/types';
 import { Avatar } from '@/components/avatar';
 import { Badge } from '@/components/ui/badge';
 import { GeneralApiData } from '@/components/widgets/general-api-data';
-import { WorkflowList } from '@/components/workflows/workflow-list';
+import { WorkflowItemStatus, WorkflowList } from '@/components/workflows/workflow-list';
 import { GitBranch, GitCommit, GitPullRequest } from 'lucide-react';
 import { FC } from 'react';
 import { toast } from 'sonner';
@@ -30,13 +30,13 @@ export const GithubWorkflowHistoryWidget: FC<GHBasicProps & {title: string}> = (
       runs={(runs ?? []).map((run) => ({
         id: run.id,
         url: run.html_url,
-        status: run.status,
-        title: run.name,
+        status: run.status as WorkflowItemStatus,
+        title: run.name!,
         subtitle: run.display_title,
         created_at: run.created_at,
         event: <>
           {run.triggering_actor &&
-            <Avatar className={'w-4 h-4'} name={run.actor?.name} src={run.actor?.avatar_url}/>}
+            <Avatar className={'w-4 h-4'} name={run.actor?.name ?? ''} src={run.actor?.avatar_url}/>}
 
           <Badge variant="outline" className="flex items-center space-x-1">
             {run.event === 'push' && <GitCommit className="w-3 h-3"/>}

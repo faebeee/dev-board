@@ -40,12 +40,12 @@ export const VercelDeploymentWidget: FC<{title: string} & BasicWidgetProps> = ({
     identifier={'uid'}>
     {(runs) => (<WorkflowList title={title}
       runs={(runs ?? []).map((run) => ({
-        url: run.inspectorUrl,
+        url: run.inspectorUrl!,
         id: run.uid,
         status: getStatus(run.state),
         subtitle: run.meta?.githubCommitMessage,
         title: run.name,
-        created_at: run.createdAt ? new Date(run.createdAt) : undefined,
+        created_at: run.createdAt ? new Date(run.createdAt).toISOString() : undefined,
         event: <>
           <Badge variant="outline" className="flex items-center space-x-1">
             <GitBranch className="w-3 h-3"/>

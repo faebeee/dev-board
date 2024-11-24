@@ -1,16 +1,23 @@
 import { WidgetType } from '@/lib/config-schema';
 
-export type Widget<T> = {
+
+export type Widget<T = object> = {
   id: string;
   widget: WidgetType,
   config: T
 }
 
-export type VercelDeploymentWidgetConfig = {
-  title: string;
-  app: string;
-  projectId: string;
-};
-export type VercelDeploymentWidget = Widget<VercelDeploymentWidgetConfig> & {
+export type VercelDeploymentWidget = Widget & {
   widget: 'vercel-deployment'
+  config: {
+    title: string;
+    app: string;
+    projectId: string;
+  }
+}
+
+export type Dashboard = {
+  title: string;
+  id: string;
+  widgets: (Widget | VercelDeploymentWidget)[]
 }

@@ -12,7 +12,7 @@ export type WorkflowItem = {
   status: WorkflowItemStatus;
   title: string;
   subtitle?: string;
-  created_at: string;
+  created_at?: string;
   event?: ReactNode
 }
 
@@ -41,9 +41,9 @@ export const WorkflowList: FC<{runs: WorkflowItem[], title: string}> = ({ runs, 
                         <h3 className="font-semibold flex flex-col">
                           {run.title}
                         </h3>
-                        <p className="text-xs text-muted-foreground">
+                        {run.created_at && <p className="text-xs text-muted-foreground">
                           {new Date(run.created_at).toLocaleString()}
-                        </p>
+                        </p>}
                       </div>
 
                       <p className="text-sm text-muted-foreground">

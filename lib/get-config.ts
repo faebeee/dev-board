@@ -1,9 +1,9 @@
-import { ConfigType } from '@/lib/config-schema';
-import { Dashboard } from '@/types/widgets';
+
+import { Dashboard } from '@/lib/types/widget';
 import { get } from '@vercel/edge-config';
 
 
-export const getConfig = async (): Promise<ConfigType> => {
+export const getConfig = async (): Promise<Dashboard[]> => {
   try {
     const dashboards = await get('dashboards') as Dashboard[];
     if (!dashboards) {
