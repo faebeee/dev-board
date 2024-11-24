@@ -15,12 +15,12 @@ export const JiraIssueSearch: FC<{title: string, jql: string}> = ({ title, jql }
     {(issues) => (<IssueList issues={(issues ?? []).map((task) => ({
       url: task.self,
       summary: task.fields.summary,
-      prio: task.fields.priority.name as IssuePrio,
-      status: task.fields.status.name as IssueStatus,
+      prio: task.fields.priority?.name as IssuePrio,
+      status: task.fields.status?.name as IssueStatus,
       id: task.id,
       key: task.key,
-      assignee: { name: task.fields.assignee.name, avatar: task.fields.assignee?.avatarUrls?.['48x48'] },
-      creator: { name: task.fields.creator.name, avatar: task.fields.creator?.avatarUrls?.['48x48'] }
+      assignee: { name: task.fields.assignee?.name, avatar: task.fields.assignee?.avatarUrls?.['48x48'] },
+      creator: { name: task.fields.creator?.name, avatar: task.fields.creator?.avatarUrls?.['48x48'] }
     }))} title={title}/>)}
   </GeneralApiData>;
 };

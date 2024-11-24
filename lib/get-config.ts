@@ -13,5 +13,6 @@ export const getConfig = async ():Promise<ConfigType> => {
     return dashboards;
   } catch {
     return (await import('../data/config.json')).default;
+    // return (await import('../data/config_prod.json')).default;
   }
 }
