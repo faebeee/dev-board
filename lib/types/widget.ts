@@ -16,6 +16,15 @@ export type VercelDeploymentWidget = Widget & {
   }
 }
 
+export type GithubCommitListWidget = Widget & {
+  widget: 'github-commits'
+  config: {
+    title: string;
+    owner: string;
+    repo: string;
+  }
+}
+
 export type Dashboard = {
   title: string;
   id: string;

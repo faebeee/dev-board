@@ -1,4 +1,5 @@
 import { AllPullRequestsWidget } from '@/components/widgets/all-pull-requests-widget';
+import { GhRepoCommitsWidget } from '@/components/widgets/gh-commits-widget';
 import { GhRepoIssuesWidget } from '@/components/widgets/gh-repo-issues-widget';
 import { GithubReleaseHistoryWidget } from '@/components/widgets/github-release-history-widget';
 import { GithubRepoEventsWidget } from '@/components/widgets/github-repo-events-widget';
@@ -22,6 +23,7 @@ const map = {
   'all-pull-requests': AllPullRequestsWidget,
   'github-issues': GhRepoIssuesWidget,
   'vercel-deployments': VercelDeploymentWidget,
+  'github-commits': GhRepoCommitsWidget
 };
 
 
