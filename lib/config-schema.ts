@@ -10,7 +10,8 @@ export const widgetTypes = [
   'my-pull-requests',
   'pull-requests-to-review',
   'workflow-run',
-  'github-issues'
+  'github-issues',
+  'vercel-deployments'
 ];
 export type WidgetType = typeof widgetTypes[number];
 
@@ -22,7 +23,8 @@ const widgetSchema = object({
     is: (widget: string) => widget === 'jira-search',
     then: schema => schema.shape({
       title: string().required(),
-      jql: string().required()
+      jql: string().required(),
+      host: string().required(),
     }),
     otherwise: (schema) => schema.shape({})
   }).when('widget', {

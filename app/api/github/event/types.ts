@@ -13,6 +13,8 @@ export type RepoEvent = Endpoints['GET /repos/{owner}/{repo}/events']['response'
         ref: string;
       }
     }
+    ref_type?: string;
+    commits?: unknown[]
     review?: {
       state?: string;
       html_url?: string
