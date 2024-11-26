@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import {useEffect, useState} from "react";
-import {fetchApi} from "@/lib/fetch-api";
-import {useInterval} from "react-use";
-import {differenceBy} from "lodash";
+import { fetchApi } from '@/lib/fetch-api';
+import { differenceBy } from 'lodash';
+import { useEffect, useState } from 'react';
+import { useInterval } from 'react-use';
 
-export function GeneralApiData<T>({children, endpoint, identifier, onNew, fetchInit}: {
+export function GeneralApiData<T>({ children, endpoint, identifier, onNew, fetchInit }: {
   endpoint: string,
   identifier?: string;
   onNew?: (data: T | null) => void;
@@ -15,7 +15,7 @@ export function GeneralApiData<T>({children, endpoint, identifier, onNew, fetchI
   const [data, setData] = useState<T | null>(null);
 
   const load = async () => {
-    const response = await fetchApi(endpoint, fetchInit)
+    const response = await fetchApi(endpoint, fetchInit);
     const d = await response.json() as T;
     if (data && Array.isArray(data) && Array.isArray(d) && identifier) {
       const newData = differenceBy(d, data ?? [], identifier);
@@ -23,12 +23,12 @@ export function GeneralApiData<T>({children, endpoint, identifier, onNew, fetchI
         onNew?.(newData as T);
       }
     }
-    setData(d)
-  }
+    setData(d);
+  };
 
   useInterval(
     () => {
-      load()
+      load();
     },
     60_000
   );
@@ -37,6 +37,10 @@ export function GeneralApiData<T>({children, endpoint, identifier, onNew, fetchI
   useEffect(() => {
     load();
   }, []);
+
+  if (!data || (Array.isArray(data) && data.length === 0)) {
+    return null;
+  }
 
   return <>{children(data)}</>;
 }

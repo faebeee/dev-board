@@ -32,6 +32,7 @@
     "react-json-editor-ajrm": "^2.5.14",
     "react-json-editor-ui": "^1.0.9",
     "react-use": "^17.5.1",
+    "recharts": "^2.13.3",
     "sonner": "^1.7.0",
     "tailwind-merge": "^2.5.4",
     "tailwindcss-animate": "^1.0.7",

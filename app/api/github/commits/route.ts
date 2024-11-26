@@ -18,6 +18,7 @@ export async function GET(request: NextRequest) {
   const response = await getGithub().rest.repos.listCommits({
     owner: config.config.owner,
     repo: config.config.repo,
+    per_page: 100,
   });
 
   const commits = response.data;

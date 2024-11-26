@@ -12,7 +12,8 @@ export const widgetTypes = [
   'workflow-run',
   'github-issues',
   'vercel-deployments',
-  'github-commits'
+  'github-commits',
+  'github-commits-charts'
 ];
 export type WidgetType = typeof widgetTypes[number];
 
