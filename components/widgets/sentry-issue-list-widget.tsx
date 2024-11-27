@@ -1,11 +1,10 @@
 'use client';
-import { SentryError } from '@/app/api/sentry/events/types';
 import { SentryIssue } from '@/app/api/sentry/issues/types';
 import { Badge } from '@/components/ui/badge';
 import { GeneralApiData } from '@/components/widgets/general-api-data';
 import { BasicWidgetProps } from '@/components/widgets/types';
 import { WorkflowItemStatus, WorkflowList } from '@/components/workflows/workflow-list';
-import { Bug, Flag, GitBranch, Server, User } from 'lucide-react';
+import { Bug, Flag, Server } from 'lucide-react';
 import { FC } from 'react';
 import { toast } from 'sonner';
 

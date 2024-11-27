@@ -1,6 +1,6 @@
 export interface SentryIssue {
   id: string;
-  shareId: any;
+  shareId: string;
   shortId: string;
   title: string;
   culprit: string;
@@ -8,7 +8,7 @@ export interface SentryIssue {
   logger: string;
   level: string;
   status: string;
-  statusDetails: StatusDetails;
+  statusDetails: unknown;
   substatus: string;
   isPublic: boolean;
   platform: string;
@@ -16,25 +16,22 @@ export interface SentryIssue {
   type: string;
   metadata: Metadata;
   numComments: number;
-  assignedTo: any;
+  assignedTo: unknown;
   isBookmarked: boolean;
   isSubscribed: boolean;
   subscriptionDetails: SubscriptionDetails;
   hasSeen: boolean;
-  annotations: any[];
+  annotations: unknown[];
   issueType: string;
   issueCategory: string;
   priority: string;
-  priorityLockedAt: any;
+  priorityLockedAt: unknown;
   isUnhandled: boolean;
   count: string;
   userCount: number;
   firstSeen: string;
   lastSeen: string;
   stats: Stats;
-}
-
-export interface StatusDetails {
 }
 
 export interface Project {
@@ -52,7 +49,7 @@ export interface Metadata {
   in_app_frame_mix: string;
   sdk: Sdk;
   initial_priority: number;
-  title: any;
+  title: string;
 }
 
 export interface Sdk {
