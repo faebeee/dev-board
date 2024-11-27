@@ -3,9 +3,9 @@
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { CheckCircle2, Clock, XCircle } from 'lucide-react';
 import { FC, ReactNode } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card';
 
-export type WorkflowItemStatus = 'completed' | 'failure' | 'running' | 'pending'
+export type WorkflowItemStatus = 'completed' | 'failure' | 'running' | 'pending' | 'unknown'
 export type WorkflowItem = {
   id: number | string
   url: string;
@@ -17,10 +17,15 @@ export type WorkflowItem = {
 }
 
 
-export const WorkflowList: FC<{runs: WorkflowItem[], title: string}> = ({ runs, title }) => {
+export const WorkflowList: FC<{runs: WorkflowItem[], title: string, subtitle?: string}> = ({
+  runs,
+  title,
+  subtitle
+}) => {
   return <Card>
     <CardHeader>
       <CardTitle>{title}</CardTitle>
+      {subtitle && <CardDescription>{subtitle}</CardDescription>}
     </CardHeader>
     <CardContent>
       <ScrollArea className="h-[450px]">
@@ -35,10 +40,11 @@ export const WorkflowList: FC<{runs: WorkflowItem[], title: string}> = ({ runs, 
                       {run.status === 'failure' && <XCircle className="text-red-500"/>}
                       {run.status === 'running' && <Clock className="text-yellow-500 animate-spin"/>}
                       {run.status === 'pending' && <Clock className="text-gray-500 animate-spin"/>}
+                      {run.status === 'unknown' && <Clock className="text-gray-500 animate-spin"/>}
                     </div>
-                    <div className={'flex flex-col space-y-2'}>
+                    <div className={'flex flex-col space-y-2 overflow-hidden'}>
                       <div>
-                        <h3 className="font-semibold flex flex-col">
+                        <h3 className="font-semibold break-words">
                           {run.title}
                         </h3>
                         {run.created_at && <p className="text-xs text-muted-foreground">
@@ -46,7 +52,7 @@ export const WorkflowList: FC<{runs: WorkflowItem[], title: string}> = ({ runs, 
                         </p>}
                       </div>
 
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-sm text-muted-foreground break-words">
                         {run.subtitle}
                       </p>
 

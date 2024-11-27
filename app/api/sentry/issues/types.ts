@@ -1,0 +1,69 @@
+export interface SentryIssue {
+  id: string;
+  shareId: any;
+  shortId: string;
+  title: string;
+  culprit: string;
+  permalink: string;
+  logger: string;
+  level: string;
+  status: string;
+  statusDetails: StatusDetails;
+  substatus: string;
+  isPublic: boolean;
+  platform: string;
+  project: Project;
+  type: string;
+  metadata: Metadata;
+  numComments: number;
+  assignedTo: any;
+  isBookmarked: boolean;
+  isSubscribed: boolean;
+  subscriptionDetails: SubscriptionDetails;
+  hasSeen: boolean;
+  annotations: any[];
+  issueType: string;
+  issueCategory: string;
+  priority: string;
+  priorityLockedAt: any;
+  isUnhandled: boolean;
+  count: string;
+  userCount: number;
+  firstSeen: string;
+  lastSeen: string;
+  stats: Stats;
+}
+
+export interface StatusDetails {
+}
+
+export interface Project {
+  id: string;
+  name: string;
+  slug: string;
+  platform: string;
+}
+
+export interface Metadata {
+  value: string;
+  type: string;
+  filename?: string;
+  function?: string;
+  in_app_frame_mix: string;
+  sdk: Sdk;
+  initial_priority: number;
+  title: any;
+}
+
+export interface Sdk {
+  name: string;
+  name_normalized: string;
+}
+
+export interface SubscriptionDetails {
+  disabled: boolean;
+}
+
+export interface Stats {
+  '24h': number[][];
+}

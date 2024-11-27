@@ -12,6 +12,17 @@ import { toast } from 'sonner';
 import { GHBasicProps } from './types';
 
 
+const getStatus = (status: string): WorkflowItemStatus => {
+  switch (status) {
+    case 'success':
+      return 'completed';
+    case 'failure':
+      return 'failure';
+    default:
+      return 'unknown';
+  }
+};
+
 export const GithubWorkflowHistoryWidget: FC<GHBasicProps & {title: string}> = ({ owner, repo, title }) => {
 
   return <GeneralApiData<Workflow[]> endpoint={'/api/github/workflow'}
@@ -30,7 +41,7 @@ export const GithubWorkflowHistoryWidget: FC<GHBasicProps & {title: string}> = (
       runs={(runs ?? []).map((run) => ({
         id: run.id,
         url: run.html_url,
-        status: run.status as WorkflowItemStatus,
+        status: getStatus(run.conclusion ?? ''),
         title: run.name!,
         subtitle: run.display_title,
         created_at: run.created_at,

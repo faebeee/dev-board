@@ -7,6 +7,23 @@ export type Widget<T = object> = {
   config: T
 }
 
+export type SentryErrorsWidget = Widget & {
+  widget: 'sentry-errors'
+  config: {
+    title: string;
+    org: string;
+    project: string;
+  }
+}
+
+export type SentryIssuesWidget = Widget & {
+  widget: 'sentry-issues'
+  config: {
+    title: string;
+    org: string;
+    project: string;
+  }
+}
 export type VercelDeploymentWidget = Widget & {
   widget: 'vercel-deployment'
   config: {
@@ -28,5 +45,5 @@ export type GithubCommitListWidget = Widget & {
 export type Dashboard = {
   title: string;
   id: string;
-  widgets: (Widget | VercelDeploymentWidget)[]
+  widgets: (Widget | VercelDeploymentWidget | SentryErrorsWidget | SentryIssuesWidget)[]
 }

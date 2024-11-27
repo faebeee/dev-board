@@ -13,7 +13,9 @@ export const widgetTypes = [
   'github-issues',
   'vercel-deployments',
   'github-commits',
-  'github-commits-charts'
+  'github-commits-charts',
+  'sentry-errors',
+  'sentry-issues',
 ];
 export type WidgetType = typeof widgetTypes[number];
 
@@ -29,12 +31,22 @@ const widgetSchema = object({
       host: string().required(),
     }),
     otherwise: (schema) => schema.shape({})
-  }).when('widget', {
+  })
+  .when('widget', {
     is: (widget: string) => ['github-issues'].includes(widget),
     then: schema => schema.shape({
       title: string().required(),
       owner: string().required(),
       repo: string().required(),
+    }),
+    otherwise: (schema) => schema.shape({})
+  })
+  .when('widget', {
+    is: (widget: string) => ['sentry-errors', 'sentry-issues'].includes(widget),
+    then: schema => schema.shape({
+      title: string().required(),
+      org: string().required(),
+      project: string().required(),
     }),
     otherwise: (schema) => schema.shape({})
   })

@@ -9,6 +9,8 @@ import { JiraReleaseWidget } from '@/components/widgets/jira-release-widget';
 import { JiraIssueSearch } from '@/components/widgets/jira-search-widget';
 import { MyPullRequestsWidget } from '@/components/widgets/my-pull-requests-widget';
 import { PullRequestsReviewWidget } from '@/components/widgets/pull-requests-review-widget';
+import { SentryErrorListWidget } from '@/components/widgets/sentry-error-list-widget';
+import { SentryIssuesListWidget } from '@/components/widgets/sentry-issue-list-widget';
 import { VercelDeploymentWidget } from '@/components/widgets/vercel-deployment-widget';
 import { Widget } from '@/lib/types/widget';
 import { FC } from 'react';
@@ -25,7 +27,9 @@ const map = {
   'github-issues': GhRepoIssuesWidget,
   'vercel-deployments': VercelDeploymentWidget,
   'github-commits': GhRepoCommitsWidget,
-  'github-commits-charts': GhCommitsChartWidget
+  'github-commits-charts': GhCommitsChartWidget,
+  'sentry-errors': SentryErrorListWidget,
+  'sentry-issues': SentryIssuesListWidget,
 };
 
 
