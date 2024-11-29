@@ -34,17 +34,17 @@ const map = {
 
 
 export const WidgetGrid: FC<{widgets: Widget[], dashboard: string}> = ({ widgets, dashboard }) => {
-  return <div className={'grid grid-cols-1 gap-4 md:grid-cols-2 2xl:grid-cols-3'}>
-    {widgets.map(({ config, id, widget }) => {
+  return <div className={'grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4'}>
+    {widgets.map(({ config, id, widget, layout }) => {
       // eslint-disable-next-line
       // @ts-ignore
       const Component = map[widget];
       if (!Component) {
-        return <div key={id}>Widge {widget} not found</div>;
+        return <div key={id}>Widget {widget} not found</div>;
       }
       // eslint-disable-next-line
       // @ts-ignore
-      return <Component {...config} dashboard={dashboard} widget={id} key={id}/>;
+      return <div key={id} className={`col-span-${layout?.cols} empty:hidden`}><Component {...config} dashboard={dashboard} widget={id} /></div>;
     })}
   </div>;
 };

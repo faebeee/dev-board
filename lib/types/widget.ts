@@ -5,6 +5,9 @@ export type Widget<T = object> = {
   id: string;
   widget: WidgetType,
   config: T
+  layout?: {
+    cols?: 1 | 2 | 3 | 4
+  }
 }
 
 export type SentryErrorsWidget = Widget & {

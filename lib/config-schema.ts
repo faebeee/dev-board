@@ -1,4 +1,4 @@
-import { array, object, string } from 'yup';
+import { array, number, object, string } from 'yup';
 
 
 export const widgetTypes = [
@@ -22,6 +22,9 @@ export type WidgetType = typeof widgetTypes[number];
 const widgetSchema = object({
   id: string().required(),
   widget: string().oneOf(widgetTypes).required(),
+  layout: object().shape({
+    cols: number(),
+  }),
   config: object()
   .when('widget', {
     is: (widget: string) => widget === 'jira-search',
