@@ -1,9 +1,11 @@
-# vercel-deployment
+# Vercel
 
-## Preview
+## vercel-deployment
+
+### Preview
 ![vercel-deployment.png](assets/vercel-deployment.png)
 
-## Config
+### Config
 ```json
 {
   "id": "vercel-deployments",

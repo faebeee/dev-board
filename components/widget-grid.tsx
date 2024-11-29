@@ -21,7 +21,7 @@ const map = {
   'workflow-run': GithubWorkflowHistoryWidget,
   'release-history': GithubReleaseHistoryWidget,
   'jira-search': JiraIssueSearch,
-  'repo-events': GithubRepoEventsWidget,
+  'github-repo-events': GithubRepoEventsWidget,
   'jira-release-list': JiraReleaseWidget,
   'all-pull-requests': AllPullRequestsWidget,
   'github-issues': GhRepoIssuesWidget,

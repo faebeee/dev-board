@@ -5,7 +5,7 @@ export const widgetTypes = [
   'jira-search',
   'all-pull-requests',
   'jira-release-list',
-  'repo-events',
+  'github-repo-events',
   'release-history',
   'my-pull-requests',
   'pull-requests-to-review',

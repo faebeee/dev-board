@@ -2,7 +2,7 @@
 
 ## Widgets
 
-### jira-search
-[Documentation](./doc/jira-search-widget.md)
-
-Shows results of jira issues for a given JQL query
+### [Github](doc/github.md)
+### [Jira](doc/jira.md)
+### [Sentry](doc/sentry.md)
+### [Vercel](doc/vercel.md)
