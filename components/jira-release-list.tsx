@@ -1,8 +1,9 @@
 "use client";
 
+import { SiJira } from '@icons-pack/react-simple-icons';
 import {FC} from 'react'
 import {ExternalLink} from 'lucide-react'
-import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import {Button} from "@/components/ui/button"
 import {ScrollArea} from "@/components/ui/scroll-area"
 import {JiraRelease} from '@/app/api/jira/release/types';
@@ -52,5 +53,8 @@ export const JiraReleaseList: FC<{ release: JiraRelease[], title: string, projec
         })}
       </ScrollArea>
     </CardContent>
+    <CardFooter>
+      <SiJira/>
+    </CardFooter>
   </Card>;
 }

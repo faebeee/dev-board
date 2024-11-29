@@ -2,18 +2,18 @@
 
 import { IssueList, IssuePrio, IssueStatus } from '@/components/issues/issue-list';
 import { GeneralApiData } from '@/components/widgets/general-api-data';
+import { SiJira } from '@icons-pack/react-simple-icons';
 import { Issue } from 'jira.js/out/version3/models';
 import { FC } from 'react';
 import { toast } from 'sonner';
 
 export const JiraIssueSearch: FC<{title: string, jql: string, host: string}> = ({ title, jql, host }) => {
-  console.log(host);
   return <GeneralApiData<Issue[]> endpoint={`/api/jira/search?query=${jql}`}
     identifier={'key'}
     onNew={(newItems) => {
       toast(`${newItems?.length} new Issues`);
     }}>
-    {(issues) => (<IssueList issues={(issues ?? []).map((task) => ({
+    {(issues) => (<IssueList footer={<SiJira/>} issues={(issues ?? []).map((task) => ({
       url: `${host}/browse/${task.key}`,
       summary: task.fields.summary,
       prio: task.fields.priority?.name as IssuePrio,

@@ -5,6 +5,7 @@ import { GH_API_OWNER_HEADER, GH_API_REPO_HEADER } from '@/app/api/github/types'
 import { IssueList, IssueStatus } from '@/components/issues/issue-list';
 import { GeneralApiData } from '@/components/widgets/general-api-data';
 import { GHBasicProps } from '@/components/widgets/types';
+import { SiGithub } from '@icons-pack/react-simple-icons';
 import { FC } from 'react';
 import { toast } from 'sonner';
 
@@ -20,7 +21,7 @@ export const GhRepoIssuesWidget: FC<{title: string} & GHBasicProps> = ({ title, 
     onNew={(newItems) => {
       toast(`${newItems?.length} new Issues`);
     }}>
-    {(issues) => (<IssueList issues={(issues ?? [])?.map((task) => ({
+    {(issues) => (<IssueList footer={<SiGithub/>} issues={(issues ?? [])?.map((task) => ({
       id: task.id,
       key: task.number,
       assignee: {

@@ -2,11 +2,12 @@
 
 import {FC, ReactNode} from "react";
 import {Avatar} from "../avatar";
-import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import {Badge} from "@/components/ui/badge"
 import {ScrollArea} from "@/components/ui/scroll-area"
 import {PullRequest, PullRequestReview} from "@/app/api/github/pr/types";
-import {CheckCircle, GitPullRequestArrow} from "lucide-react";
+import { CheckCircle, GitPullRequestArrow } from 'lucide-react';
+import { SiGithub } from '@icons-pack/react-simple-icons';
 import {GeneralApiData} from "@/components/widgets/general-api-data";
 import {GH_API_OWNER_HEADER, GH_API_REPO_HEADER} from "@/app/api/github/types";
 
@@ -16,7 +17,7 @@ export const PrList: FC<{
 }> = ({title, pullRequest}) => {
   return <Card>
     <CardHeader>
-      <CardTitle>{title}</CardTitle>
+      <CardTitle> {title}</CardTitle>
       <CardDescription>Total {pullRequest?.length} Pull-Requests</CardDescription>
     </CardHeader>
     <CardContent>
@@ -61,5 +62,8 @@ export const PrList: FC<{
       </ScrollArea>
 
     </CardContent>
+    <CardFooter>
+      <SiGithub />
+    </CardFooter>
   </Card>;
 }

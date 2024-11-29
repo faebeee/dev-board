@@ -5,7 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { CheckCircle2, Circle, Clock, Flag, MessageCircleQuestion } from 'lucide-react';
 import { FC, ReactNode } from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../ui/card';
 
 export type IssueStatus = 'Open' | 'In Progress' | 'Done'
 export type IssuePrio = 'Low' | 'Medium' | 'High'
@@ -49,9 +49,8 @@ const getPriorityBadge = (priority: IssuePrio) => {
   );
 };
 
-export const IssueList: FC<{issues: Issue[], title: ReactNode}> = ({ issues, title }) => {
-
-  return <Card>
+export const IssueList: FC<{issues: Issue[], title: ReactNode, footer?: ReactNode, className?: string}> = ({ issues, title, footer, className }) => {
+  return <Card className={className}>
     <CardHeader>
       <CardTitle>{title}</CardTitle>
       <CardDescription>Total {issues?.length} issues</CardDescription>
@@ -91,6 +90,9 @@ export const IssueList: FC<{issues: Issue[], title: ReactNode}> = ({ issues, tit
         </ul>
       </ScrollArea>
     </CardContent>
+    <CardFooter>
+      {footer}
+    </CardFooter>
   </Card>
     ;
 };

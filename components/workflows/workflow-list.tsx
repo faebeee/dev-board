@@ -3,7 +3,7 @@
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { CheckCircle2, Clock, XCircle } from 'lucide-react';
 import { FC, ReactNode } from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../ui/card';
 
 export type WorkflowItemStatus = 'completed' | 'failure' | 'running' | 'pending' | 'unknown'
 export type WorkflowItem = {
@@ -17,10 +17,11 @@ export type WorkflowItem = {
 }
 
 
-export const WorkflowList: FC<{runs: WorkflowItem[], title: string, subtitle?: string}> = ({
+export const WorkflowList: FC<{runs: WorkflowItem[], title: string, subtitle?: string, footer?: ReactNode}> = ({
   runs,
   title,
-  subtitle
+  subtitle,
+  footer,
 }) => {
   return <Card>
     <CardHeader>
@@ -69,6 +70,9 @@ export const WorkflowList: FC<{runs: WorkflowItem[], title: string, subtitle?: s
         </ul>
       </ScrollArea>
     </CardContent>
+    <CardFooter>
+      {footer}
+    </CardFooter>
   </Card>
     ;
 };

@@ -2,8 +2,9 @@
 
 import { RepoEvent } from '@/app/api/github/event/types';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { SiGithub } from '@icons-pack/react-simple-icons';
 import {
   CheckCircle,
   GitBranch,
@@ -124,6 +125,9 @@ export const RepoEventList: FC<{events: RepoEvent[], title: string}> = ({ events
           </ul>
         </ScrollArea>
       </CardContent>
+      <CardFooter>
+        <SiGithub/>
+      </CardFooter>
     </Card>
   );
 };

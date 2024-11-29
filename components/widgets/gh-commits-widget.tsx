@@ -6,6 +6,7 @@ import Timeline from '@/components/timeline';
 import { Widget } from '@/components/widget';
 import { GeneralApiData } from '@/components/widgets/general-api-data';
 import { BasicWidgetProps } from '@/components/widgets/types';
+import { SiGithub } from '@icons-pack/react-simple-icons';
 import { FC } from 'react';
 import { toast } from 'sonner';
 
@@ -15,7 +16,7 @@ export const GhRepoCommitsWidget: FC<{title: string} & BasicWidgetProps> = ({ ti
     onNew={(newItems) => {
       toast(`${newItems?.length} new Issues`);
     }}>
-    {(commits) => (<Widget title={title}>
+    {(commits) => (<Widget footer={<SiGithub/>} title={title}>
       <Timeline>
         {commits?.map((commit) => (<a target={'_blank'} key={commit.node_id} href={commit.html_url}>
           <div key={commit.node_id} className="mb-8 flex gap-2 items-center w-full right-timeline">

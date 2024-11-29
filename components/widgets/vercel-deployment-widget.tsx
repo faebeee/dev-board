@@ -4,6 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import { GeneralApiData } from '@/components/widgets/general-api-data';
 import { BasicWidgetProps } from '@/components/widgets/types';
 import { WorkflowItemStatus, WorkflowList } from '@/components/workflows/workflow-list';
+import { SiVercel } from '@icons-pack/react-simple-icons';
 import { Deployments } from '@vercel/sdk/models/operations/getdeployments';
 import { GitBranch, User } from 'lucide-react';
 import { FC } from 'react';
@@ -38,7 +39,7 @@ export const VercelDeploymentWidget: FC<{title: string} & BasicWidgetProps> = ({
 }) => {
   return <GeneralApiData<Deployments[]> endpoint={`/api/vercel/deployments?dashboard=${dashboard}&widget=${widget}`}
     identifier={'uid'}>
-    {(runs) => (<WorkflowList title={title}
+    {(runs) => (<WorkflowList footer={<SiVercel/>} title={title}
       runs={(runs ?? []).map((run) => ({
         url: run.inspectorUrl!,
         id: run.uid,

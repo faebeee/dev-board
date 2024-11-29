@@ -6,7 +6,8 @@ import { Avatar } from '@/components/avatar';
 import { Badge } from '@/components/ui/badge';
 import { GeneralApiData } from '@/components/widgets/general-api-data';
 import { WorkflowItemStatus, WorkflowList } from '@/components/workflows/workflow-list';
-import { GitBranch, Send} from 'lucide-react';
+import { SiGithub } from '@icons-pack/react-simple-icons';
+import { GitBranch, Send } from 'lucide-react';
 import { FC } from 'react';
 import { toast } from 'sonner';
 import { GHBasicProps } from './types';
@@ -38,6 +39,7 @@ export const GithubWorkflowHistoryWidget: FC<GHBasicProps & {title: string}> = (
     }}
   >
     {(runs) => (<WorkflowList title={title}
+      footer={<SiGithub/>}
       runs={(runs ?? []).map((run) => ({
         id: run.id,
         url: run.html_url,

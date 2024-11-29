@@ -4,6 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import { GeneralApiData } from '@/components/widgets/general-api-data';
 import { BasicWidgetProps } from '@/components/widgets/types';
 import { WorkflowItemStatus, WorkflowList } from '@/components/workflows/workflow-list';
+import { SiSentry } from '@icons-pack/react-simple-icons';
 import { GitBranch } from 'lucide-react';
 import { FC } from 'react';
 import { toast } from 'sonner';
@@ -24,7 +25,7 @@ export const SentryErrorListWidget: FC<{title: string} & BasicWidgetProps> = ({ 
     onNew={(newItems) => {
       toast(`${newItems?.length} new error`);
     }}>
-    {(events) => (<WorkflowList title={title}
+    {(events) => (<WorkflowList footer={<SiSentry/>} title={title}
       subtitle={`Total ${events?.length} events`}
       runs={(events ?? []).map((event) => ({
         url: event.id,
