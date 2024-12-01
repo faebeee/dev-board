@@ -45,9 +45,11 @@ export type GithubCommitListWidget = Widget & {
   }
 }
 
+export type DashboardType = 'carousel' | 'grid'
+
 export type Dashboard = {
   title: string;
   id: string;
   widgets: (Widget | VercelDeploymentWidget | SentryErrorsWidget | SentryIssuesWidget)[]
-  type: 'carousel' | 'grid';
+  type: DashboardType;
 }

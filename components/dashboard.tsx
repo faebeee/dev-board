@@ -1,10 +1,10 @@
 import { WidgetCarousel } from '@/components/widget-carousel';
 import { WidgetGrid } from '@/components/widget-grid';
-import { Widget } from '@/lib/types/widget';
+import { DashboardType, Widget } from '@/lib/types/widget';
 import { FC } from 'react';
 
 
-export const Dashboard: FC<{widgets: Widget[], dashboardId: string, type?: 'grid' | 'carouse;'}> = ({
+export const Dashboard: FC<{widgets: Widget[], dashboardId: string, type?: DashboardType}> = ({
   widgets,
   dashboardId,
   type = 'grid'
