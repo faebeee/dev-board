@@ -60,7 +60,8 @@ const widgetSchema = object({
 const dashboardSchema = object({
   id: string().required(),
   title: string().required(),
-  widgets: array(widgetSchema)
+  widgets: array(widgetSchema),
+  type: string().oneOf(['grid', 'carousel']).required(),
 });
 
 

@@ -1,5 +1,5 @@
+import { Dashboard } from '@/components/dashboard';
 import { Header } from '@/components/header';
-import { WidgetGrid } from '@/components/widget-grid';
 import { getConfig } from '@/lib/get-config';
 import { Suspense } from 'react';
 
@@ -8,10 +8,10 @@ export default async function Home() {
 
   return (
     <>
-      <Header links={dashboards!.map((dashboard) => ({ label: dashboard.title, href: `/${dashboard.id}` }))}/>
+      <Header title={'Home'}/>
       <Suspense>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-10">
-          {dashboards?.[0]?.widgets && <WidgetGrid dashboard={dashboards[0].id} widgets={dashboards[0].widgets!}/>}
+          {dashboards?.[0]?.widgets && <Dashboard type={dashboard.type} dashboardId={dashboards[0].id} widgets={dashboards[0].widgets!}/>}
         </div>
       </Suspense>
     </>

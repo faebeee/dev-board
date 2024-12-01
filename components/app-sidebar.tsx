@@ -9,42 +9,30 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar"
-import {Home, User} from "lucide-react"
-import {UserInfo} from "./user/user-info"
+} from '@/components/ui/sidebar';
+import { getConfig } from '@/lib/get-config';
+import { SignOutButton, UserButton } from '@clerk/nextjs';
+import Link from 'next/link';
+import { FC } from 'react';
 
-const items = [
-  {
-    title: "Home",
-    url: "/",
-    icon: Home,
-  },
+export const AppSidebar: FC = async () => {
+  const dashboards = await getConfig();
 
-  {
-    title: "Personal",
-    url: "/me",
-    icon: User,
-  },
-]
-
-export function AppSidebar() {
   return (
     <Sidebar>
       <SidebarHeader>
-        <UserInfo/>
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup/>
-        <SidebarGroupLabel>Application</SidebarGroupLabel>
+        <SidebarGroupLabel>Dashboards</SidebarGroupLabel>
         <SidebarGroupContent>
           <SidebarMenu>
-            {items.map((item) => (
-              <SidebarMenuItem key={item.title}>
+            {dashboards.map((link) => (
+              <SidebarMenuItem key={link.id}>
                 <SidebarMenuButton asChild>
-                  <a href={item.url}>
-                    <item.icon/>
-                    <span>{item.title}</span>
-                  </a>
+                  <Link href={`/${link.id}`}>
+                    <span>{link.title}</span>
+                  </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
             ))}
@@ -52,7 +40,18 @@ export function AppSidebar() {
         </SidebarGroupContent>
         <SidebarGroup/>
       </SidebarContent>
-      <SidebarFooter/>
+      <SidebarFooter>
+        <div className="flex items-center px-5">
+          <div className="flex-shrink-0">
+            <UserButton/>
+          </div>
+        </div>
+        <div className="mt-3 px-2 space-y-1">
+          <div className="block w-full text-left px-3 py-2">
+            <SignOutButton/>
+          </div>
+        </div>
+      </SidebarFooter>
     </Sidebar>
-  )
-}
+  );
+};

@@ -1,13 +1,13 @@
-import {getConfig} from "@/lib/get-config";
-import {JsonEditor} from "@/components/json-editor";
-import {Header} from "@/components/header";
-import {Suspense} from "react";
+import { Header } from '@/components/header';
+import { JsonEditor } from '@/components/json-editor';
+import { getConfig } from '@/lib/get-config';
+import { Suspense } from 'react';
 
 export default async function EditPage() {
   const config = await getConfig();
 
   return (<>
-      <Header links={config!.map((dashboard) => ({label: dashboard.title, href: `/${dashboard.id}`}))}/>
+      <Header title={'Settings'}/>
       <Suspense>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-10">
           {config && <JsonEditor config={config}/>}

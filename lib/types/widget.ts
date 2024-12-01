@@ -49,4 +49,5 @@ export type Dashboard = {
   title: string;
   id: string;
   widgets: (Widget | VercelDeploymentWidget | SentryErrorsWidget | SentryIssuesWidget)[]
+  type: 'carousel' | 'grid';
 }
