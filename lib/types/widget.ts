@@ -45,11 +45,20 @@ export type GithubCommitListWidget = Widget & {
   }
 }
 
+export type GithubBranchListWidget = Widget & {
+  widget: 'github-branches'
+  config: {
+    title: string;
+    owner: string;
+    repo: string;
+  }
+}
+
 export type DashboardType = 'carousel' | 'grid'
 
 export type Dashboard = {
   title: string;
   id: string;
-  widgets: (Widget | VercelDeploymentWidget | SentryErrorsWidget | SentryIssuesWidget)[]
+  widgets: (Widget | VercelDeploymentWidget | SentryErrorsWidget | SentryIssuesWidget | GithubBranchListWidget)[]
   type: DashboardType;
 }

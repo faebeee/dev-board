@@ -2,6 +2,7 @@ import { AllPullRequestsWidget } from '@/components/widgets/all-pull-requests-wi
 import { GhCommitsChartWidget } from '@/components/widgets/gh-commits-chart-widget';
 import { GhRepoCommitsWidget } from '@/components/widgets/gh-commits-widget';
 import { GhRepoIssuesWidget } from '@/components/widgets/gh-repo-issues-widget';
+import { GithubBranchesListWidget } from '@/components/widgets/github-branches-list-widget';
 import { GithubReleaseHistoryWidget } from '@/components/widgets/github-release-history-widget';
 import { GithubRepoEventsWidget } from '@/components/widgets/github-repo-events-widget';
 import { GithubWorkflowHistoryWidget } from '@/components/widgets/github-workflow-history-widget';
@@ -30,6 +31,7 @@ const map = {
   'github-commits-charts': GhCommitsChartWidget,
   'sentry-errors': SentryErrorListWidget,
   'sentry-issues': SentryIssuesListWidget,
+  'github-branches': GithubBranchesListWidget,
 };
 
 export const WidgetMounter: FC<{widget: Widget, dashboard: string}> = ({ widget, dashboard }) => {

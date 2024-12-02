@@ -4,6 +4,7 @@ export type GHBasicProps = {
 }
 
 export type BasicWidgetProps = {
+  title: string;
   dashboard: string;
   widget: string;
 }

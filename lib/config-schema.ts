@@ -16,6 +16,7 @@ export const widgetTypes = [
   'github-commits-charts',
   'sentry-errors',
   'sentry-issues',
+  'github-branches',
 ];
 export type WidgetType = typeof widgetTypes[number];
 
