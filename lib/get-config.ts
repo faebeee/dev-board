@@ -4,6 +4,15 @@ import { get } from '@vercel/edge-config';
 import { promises as fs } from 'fs';
 
 export const getConfig = async (): Promise<Dashboard[]> => {
+  if (process.env.CONFIG_TYPE === 'gist' && !!process.env.CONFIG_URL) {
+    const response = await fetch(process.env.CONFIG_URL);
+    const data = await response.json();
+
+    await configSchema.validate(data);
+    console.log(data);
+    return data;
+  }
+
   if (process.env.EDGE_CONFIG) {
     const dashboards = await get('dashboards') as Dashboard[];
     if (!dashboards) {
