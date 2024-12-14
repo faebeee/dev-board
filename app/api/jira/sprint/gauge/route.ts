@@ -1,11 +1,10 @@
-import { JiraSprintGaugeResponse } from '@/app/api/jira/sprint/gauge/types';
 import { getWidgetConfig } from '@/lib/get-widget-config';
 import { getNewJira } from '@/lib/jira';
 import { JiraGaugeWidget } from '@/lib/types/widget';
 import { notFound } from 'next/navigation';
 import { NextRequest } from 'next/server';
 
-export async function GET(request: NextRequest): Promise<JiraSprintGaugeResponse> {
+export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl!.searchParams;
   const dashboardId = searchParams.get('dashboard');
   const widgetId = searchParams.get('widget');
