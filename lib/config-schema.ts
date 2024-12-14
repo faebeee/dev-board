@@ -17,6 +17,8 @@ export const widgetTypes = [
   'sentry-errors',
   'sentry-issues',
   'github-branches',
+  'github-packages',
+  'jira-sprint-gauge',
 ];
 export type WidgetType = typeof widgetTypes[number];
 
@@ -33,6 +35,15 @@ const widgetSchema = object({
       title: string().required(),
       jql: string().required(),
       host: string().required(),
+    }),
+    otherwise: (schema) => schema.shape({})
+  })
+  .when('widget', {
+    is: (widget: WidgetType) => widget === 'jira-sprint-gauge',
+    then: schema => schema.shape({
+      title: string().required(),
+      jql: string().required(),
+      categories: array().of(string()).required(),
     }),
     otherwise: (schema) => schema.shape({})
   })

@@ -1,0 +1,93 @@
+[
+  {
+    "id": "dev",
+    "title": "Dev",
+    "type": "grid",
+    "widgets": [
+      {
+        "id": "github-packages",
+        "widget": "github-packages",
+        "config": {
+          "title": "Packages",
+          "owner": "Konova-Ag",
+          "repo": "emi-ui"
+        }
+      },
+      {
+        "id": "prs-to-review",
+        "widget": "pull-requests-to-review",
+        "config": {
+          "title": "Pull-Requests to review",
+          "owner": "faebeee",
+          "repo": "dev-board"
+        }
+      },
+      {
+        "id": "branches",
+        "widget": "github-branches",
+        "config": {
+          "title": "Branches",
+          "owner": "faebeee",
+          "repo": "dev-board"
+        }
+      },
+      {
+        "id": "gh-issues",
+        "widget": "github-issues",
+        "config": {
+          "title": "Github Issues",
+          "owner": "faebeee",
+          "repo": "dev-board"
+        },
+        "layout": {
+          "cols": 2
+        }
+      },
+      {
+        "id": "events",
+        "widget": "github-repo-events",
+        "config": {
+          "title": "Events",
+          "owner": "faebeee",
+          "repo": "dev-board"
+        }
+      },
+      {
+        "id": "commits",
+        "widget": "github-commits",
+        "config": {
+          "title": "Commits",
+          "owner": "faebeee",
+          "repo": "dev-board"
+        }
+      },
+      {
+        "id": "vercel-deployments",
+        "widget": "vercel-deployments",
+        "config": {
+          "title": "Deployments",
+          "app": "dev-board",
+          "projectId": "prj_vuODg0cUEdiOaIZ3FFKL92FVxMrw"
+        }
+      },
+      {
+        "id": "sentry-errors",
+        "widget": "sentry-errors",
+        "config": {
+          "title": "Sentry",
+          "org": "konova-ag",
+          "project": "4508013995491408"
+        }
+      },
+      {
+        "id": "sentry-issues",
+        "widget": "sentry-issues",
+        "config": {
+          "title": "Sentry Issues",
+          "org": "konova-ag",
+          "project": "4508013995491408"
+        }
+      }
+    ]
+  }
+]

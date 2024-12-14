@@ -8,6 +8,7 @@ import { GithubRepoEventsWidget } from '@/components/widgets/github-repo-events-
 import { GithubWorkflowHistoryWidget } from '@/components/widgets/github-workflow-history-widget';
 import { JiraReleaseWidget } from '@/components/widgets/jira-release-widget';
 import { JiraIssueSearch } from '@/components/widgets/jira-search-widget';
+import { JiraSprintGaugeWidget } from '@/components/widgets/jira-sprint-gauge-widget';
 import { MyPullRequestsWidget } from '@/components/widgets/my-pull-requests-widget';
 import { PullRequestsReviewWidget } from '@/components/widgets/pull-requests-review-widget';
 import { SentryErrorListWidget } from '@/components/widgets/sentry-error-list-widget';
@@ -32,6 +33,7 @@ const map = {
   'sentry-errors': SentryErrorListWidget,
   'sentry-issues': SentryIssuesListWidget,
   'github-branches': GithubBranchesListWidget,
+  'jira-sprint-gauge': JiraSprintGaugeWidget,
 };
 
 export const WidgetMounter: FC<{widget: Widget, dashboard: string}> = ({ widget, dashboard }) => {

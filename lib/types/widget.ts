@@ -45,6 +45,15 @@ export type GithubCommitListWidget = Widget & {
   }
 }
 
+export type GithubPackagesListWidget = Widget & {
+  widget: 'github-packages'
+  config: {
+    title: string;
+    owner: string;
+    repo: string;
+  }
+}
+
 export type GithubBranchListWidget = Widget & {
   widget: 'github-branches'
   config: {
@@ -54,11 +63,22 @@ export type GithubBranchListWidget = Widget & {
   }
 }
 
+
+export type JiraGaugeWidget = Widget & {
+  widget: 'jira-sprint-gauge'
+  config: {
+    title: string;
+    jql: string;
+    host: string;
+    categories: string[]
+  }
+}
+
 export type DashboardType = 'carousel' | 'grid'
 
 export type Dashboard = {
   title: string;
   id: string;
-  widgets: (Widget | VercelDeploymentWidget | SentryErrorsWidget | SentryIssuesWidget | GithubBranchListWidget)[]
+  widgets: (Widget | JiraGaugeWidget | GithubPackagesListWidget | VercelDeploymentWidget | SentryErrorsWidget | SentryIssuesWidget | GithubBranchListWidget)[]
   type: DashboardType;
 }
