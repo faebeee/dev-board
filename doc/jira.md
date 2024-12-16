@@ -42,3 +42,29 @@
 ```
 
 `config.jql` can be any Jira query
+
+--- 
+
+## jira-sprint-gauge
+
+### Preview
+![jira-sprint-gauge.png](assets/jira-sprint-gauge.png)
+
+### Config
+```json
+{
+  "id": "sprint-progress",
+  "widget": "jira-sprint-gauge",
+  "config": {
+    "title": "Unassigned Tasks in Sprint",
+    "jql": "sprint in openSprints() ORDER BY status DESC",
+    "host": "https://XXX.atlassian.net",
+    "categories": [
+      "Issue Status 1",
+      "Issue Status 2"
+    ]
+  }
+},
+```
+
+`config.jql` can be any Jira query
