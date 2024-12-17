@@ -3,7 +3,11 @@ import { ChartContainer } from '@/components/ui/chart';
 import React, { FC } from 'react';
 import { Cell, Legend, Pie, PieChart, ResponsiveContainer } from 'recharts';
 
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+const COLORS = [
+  '#0088FE', '#00C49F', '#FFBB28', '#FF8042',
+  '#A28ADC', '#FF6699', '#33CCCC', '#B6E880',
+  '#FF8C00', '#C71585', '#4682B4', '#EE82EE'
+];
 
 
 export const GaugeWidget: FC<{
@@ -33,14 +37,13 @@ export const GaugeWidget: FC<{
       className="h-[300px]"
     >
       <ResponsiveContainer width="100%" height="100%">
-        <PieChart width={400} height={400}>
-          <Pie startAngle={180}
-            endAngle={0} data={values} dataKey="value" outerRadius={60} fill="#8884d8" label>
+        <PieChart>
+          <Pie data={values} dataKey="value" innerRadius={30} paddingAngle={5} cornerRadius={5} outerRadius={60} fill="#8884d8" label>
             {values.map((entry, index) => (
               <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
             ))}
           </Pie>
-          <Legend />
+          <Legend/>
         </PieChart>
       </ResponsiveContainer>
     </ChartContainer>

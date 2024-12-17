@@ -63,7 +63,6 @@ export type GithubBranchListWidget = Widget & {
   }
 }
 
-
 export type JiraGaugeWidget = Widget & {
   widget: 'jira-sprint-gauge'
   config: {
@@ -74,11 +73,20 @@ export type JiraGaugeWidget = Widget & {
   }
 }
 
+export type JiraIssuesGaugeWidget = Widget & {
+  widget: 'jira-issues-gauge'
+  config: {
+    title: string;
+    jql: string;
+    host: string;
+  }
+}
+
 export type DashboardType = 'carousel' | 'grid'
 
 export type Dashboard = {
   title: string;
   id: string;
-  widgets: (Widget | JiraGaugeWidget | GithubPackagesListWidget | VercelDeploymentWidget | SentryErrorsWidget | SentryIssuesWidget | GithubBranchListWidget)[]
+  widgets: (Widget | JiraIssuesGaugeWidget | JiraGaugeWidget | GithubPackagesListWidget | VercelDeploymentWidget | SentryErrorsWidget | SentryIssuesWidget | GithubBranchListWidget)[]
   type: DashboardType;
 }

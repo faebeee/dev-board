@@ -8,19 +8,13 @@ import { BasicWidgetProps } from '@/components/widgets/types';
 import { SiJira } from '@icons-pack/react-simple-icons';
 import { FC } from 'react';
 
-export const JiraSprintGaugeWidget: FC<BasicWidgetProps & {categories: string[], jql: string}> = ({
-  categories,
-  title,
-  widget,
-  dashboard,
-  jql
-}) => {
+export const JiraIssuesGaugeWidget: FC<BasicWidgetProps & {jql: string}> = ({ title, widget, dashboard, jql }) => {
   return <GeneralApiData<JiraSprintGaugeResponse>
-    endpoint={`/api/jira/sprint/gauge?dashboard=${dashboard}&widget=${widget}`}
+    endpoint={`/api/jira/issues/gauge?dashboard=${dashboard}&widget=${widget}`}
     identifier={'key'}
   >
     {(response) => (<Widget description={jql} footer={<SiJira/>} title={title}>
-      <GaugeWidget data={response ?? {}} categories={categories}/>
+      <GaugeWidget data={response ?? {}} categories={Object.keys(response ?? {})}/>
     </Widget>)}
   </GeneralApiData>;
 };
