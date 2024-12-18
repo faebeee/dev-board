@@ -82,11 +82,21 @@ export type JiraIssuesGaugeWidget = Widget & {
   }
 }
 
+export type JiraStatsGaugeWidget = Widget & {
+  widget: 'jira-stats-gauge'
+  config: {
+    title: string;
+    jql: string;
+    host: string;
+    accessor: string
+  }
+}
+
 export type DashboardType = 'carousel' | 'grid'
 
 export type Dashboard = {
   title: string;
   id: string;
-  widgets: (Widget | JiraIssuesGaugeWidget | JiraGaugeWidget | GithubPackagesListWidget | VercelDeploymentWidget | SentryErrorsWidget | SentryIssuesWidget | GithubBranchListWidget)[]
+  widgets: (Widget | JiraStatsGaugeWidget | JiraIssuesGaugeWidget | JiraGaugeWidget | GithubPackagesListWidget | VercelDeploymentWidget | SentryErrorsWidget | SentryIssuesWidget | GithubBranchListWidget)[]
   type: DashboardType;
 }

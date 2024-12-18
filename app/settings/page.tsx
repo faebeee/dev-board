@@ -1,5 +1,5 @@
-import { Header } from '@/components/header';
-import { JsonEditor } from '@/components/json-editor';
+import { Header } from '@/lib/components/header';
+import { JsonEditor } from '@/lib/components/json-editor';
 import { getConfig } from '@/lib/get-config';
 import { Suspense } from 'react';
 

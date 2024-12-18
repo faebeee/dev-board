@@ -3,14 +3,16 @@ import type { Config } from "tailwindcss";
 const config: Config = {
     darkMode: ["class"],
     content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./lib/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
 	safelist: [
 		'col-span-2',
 		'col-span-3',
 		'col-span-4',
+		'opacity-1',
+		'opacity-25',
+		'opacity-0',
 	],
   theme: {
   	extend: {

@@ -1,7 +1,8 @@
-import { AppSidebar } from '@/components/app-sidebar';
-import { Login } from '@/components/login';
-import { SidebarProvider } from '@/components/ui/sidebar';
-import { Toaster } from '@/components/ui/sonner';
+import { AppSidebar } from '@/lib/components/app-sidebar';
+import { Login } from '@/lib/components/login';
+import { SidebarProvider } from '@/lib/components/ui/sidebar';
+import { Toaster } from '@/lib/components/ui/sonner';
+import { JiraIssueHighlightProvider } from '@/lib/context/jira-issue-hightlight-provider';
 import { ClerkProvider, SignedIn, SignedOut, } from '@clerk/nextjs';
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
@@ -45,7 +46,9 @@ export default function RootLayout({
             <Login/>
           </SignedOut>
           <SignedIn>
-            {children}
+            <JiraIssueHighlightProvider>
+              {children}
+            </JiraIssueHighlightProvider>
           </SignedIn>
         </main>
       </SidebarProvider>

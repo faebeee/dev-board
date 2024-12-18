@@ -1,5 +1,5 @@
-import { Dashboard } from '@/components/dashboard';
-import { Header } from '@/components/header';
+import { Dashboard } from '@/lib/components/dashboard';
+import { Header } from '@/lib/components/header';
 import { getConfig } from '@/lib/get-config';
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
