@@ -6,7 +6,7 @@ import { PolarAngleAxis, PolarGrid, PolarRadiusAxis, Radar, RadarChart, Responsi
 export const RadarChartWidget: FC<{
   data: {[key: string | number]: string | number}[],
   categories: string[]
-}> = ({ data = {}, categories = [] }) => {
+}> = ({ data = [], categories = [] }) => {
 
   return <>
     <ResponsiveContainer width="100%" height="100%">

@@ -1,11 +1,10 @@
-import { RadarChartWidget } from '@/lib/components/radar-chart-widget';
 import { AllPullRequestsWidget } from '@/lib/components/widgets/all-pull-requests-widget';
 import { GhCommitsChartWidget } from '@/lib/components/widgets/gh-commits-chart-widget';
 import { GhRepoCommitsWidget } from '@/lib/components/widgets/gh-commits-widget';
 import { GhRepoIssuesWidget } from '@/lib/components/widgets/gh-repo-issues-widget';
 import { GithubBranchesListWidget } from '@/lib/components/widgets/github-branches-list-widget';
-import { GithubContributorStats } from '@/lib/components/widgets/github-contributor-stats';
 import { GithubContributions } from '@/lib/components/widgets/github-contributions';
+import { GithubContributorStats } from '@/lib/components/widgets/github-contributor-stats';
 import { GithubReleaseHistoryWidget } from '@/lib/components/widgets/github-release-history-widget';
 import { GithubRepoEventsWidget } from '@/lib/components/widgets/github-repo-events-widget';
 import { GithubRepoStats } from '@/lib/components/widgets/github-repo-stats';
@@ -24,7 +23,7 @@ import { WidgetType } from '@/lib/config-schema';
 import { Widget } from '@/lib/types/widget';
 import { FC } from 'react';
 
-const map:Record<WidgetType, unknown> = {
+const map: Record<WidgetType, unknown> = {
   'my-pull-requests': MyPullRequestsWidget,
   'pull-requests-to-review': PullRequestsReviewWidget,
   'workflow-run': GithubWorkflowHistoryWidget,
@@ -43,9 +42,9 @@ const map:Record<WidgetType, unknown> = {
   'jira-sprint-gauge': JiraSprintGaugeWidget,
   'jira-issues-gauge': JiraIssuesGaugeWidget,
   'jira-stats-gauge': JiraStatsGaugeWidget,
-  'github-stats':GithubRepoStats,
-  'github-contributions':GithubContributions,
-  'github-contributor-stats':GithubContributorStats,
+  'github-stats': GithubRepoStats,
+  'github-contributions': GithubContributions,
+  'github-contributor-stats': GithubContributorStats,
 };
 
 export const WidgetMounter: FC<{widget: Widget, dashboard: string}> = ({ widget, dashboard }) => {
@@ -55,9 +54,9 @@ export const WidgetMounter: FC<{widget: Widget, dashboard: string}> = ({ widget,
   if (!Component) {
     return <div key={widget.id}>Widget {widget.widget} not found</div>;
   }
-  // eslint-disable-next-line
-  // @ts-ignore
   return <div key={widget.id} className={`col-span-${widget.layout?.cols} empty:hidden`}>
+    {/* eslint-disable-next-line*/}
+    {/* @ts-ignore*/}
     <Component {...widget.config}
       dashboard={dashboard}
       widget={widget.id}/></div>;
