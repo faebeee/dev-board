@@ -58,7 +58,6 @@ export const IssueList: FC<{issues: Issue[], title: ReactNode, footer?: ReactNod
   className
 }) => {
   const jiraIssueHightlightContext = useJiraIssueHightlightContext();
-  console.log(jiraIssueHightlightContext);
 
   return <Card className={className}>
     <CardHeader>

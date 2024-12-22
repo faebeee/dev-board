@@ -9,7 +9,6 @@ export const getConfig = async (): Promise<Dashboard[]> => {
     const data = await response.json();
 
     await configSchema.validate(data);
-    console.log(data);
     return data;
   }
 

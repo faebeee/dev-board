@@ -1,13 +1,8 @@
 import { JiraSprintGaugeResponse } from '@/app/api/jira/sprint/gauge/types';
+import { CHART_COLORS } from '@/lib/colors';
 import { ChartContainer } from '@/lib/components/ui/chart';
 import React, { FC } from 'react';
 import { Cell, Legend, Pie, PieChart, ResponsiveContainer } from 'recharts';
-
-const COLORS = [
-  '#0088FE', '#00C49F', '#FFBB28', '#FF8042',
-  '#A28ADC', '#FF6699', '#33CCCC', '#B6E880',
-  '#FF8C00', '#C71585', '#4682B4', '#EE82EE'
-];
 
 
 export const GaugeWidget: FC<{
@@ -40,7 +35,7 @@ export const GaugeWidget: FC<{
         <PieChart>
           <Pie data={values} dataKey="value" innerRadius={30} paddingAngle={5} cornerRadius={5} outerRadius={60} fill="#8884d8" label>
             {values.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+              <Cell key={`cell-${index}`} fill={CHART_COLORS[index % CHART_COLORS.length]} />
             ))}
           </Pie>
           <Legend/>

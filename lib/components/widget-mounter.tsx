@@ -1,10 +1,14 @@
+import { RadarChartWidget } from '@/lib/components/radar-chart-widget';
 import { AllPullRequestsWidget } from '@/lib/components/widgets/all-pull-requests-widget';
 import { GhCommitsChartWidget } from '@/lib/components/widgets/gh-commits-chart-widget';
 import { GhRepoCommitsWidget } from '@/lib/components/widgets/gh-commits-widget';
 import { GhRepoIssuesWidget } from '@/lib/components/widgets/gh-repo-issues-widget';
 import { GithubBranchesListWidget } from '@/lib/components/widgets/github-branches-list-widget';
+import { GithubContributorStats } from '@/lib/components/widgets/github-contributor-stats';
+import { GithubContributions } from '@/lib/components/widgets/github-contributions';
 import { GithubReleaseHistoryWidget } from '@/lib/components/widgets/github-release-history-widget';
 import { GithubRepoEventsWidget } from '@/lib/components/widgets/github-repo-events-widget';
+import { GithubRepoStats } from '@/lib/components/widgets/github-repo-stats';
 import { GithubWorkflowHistoryWidget } from '@/lib/components/widgets/github-workflow-history-widget';
 import { JiraIssuesGaugeWidget } from '@/lib/components/widgets/jira-issues-gauge-widget';
 import { JiraReleaseWidget } from '@/lib/components/widgets/jira-release-widget';
@@ -16,10 +20,11 @@ import { PullRequestsReviewWidget } from '@/lib/components/widgets/pull-requests
 import { SentryErrorListWidget } from '@/lib/components/widgets/sentry-error-list-widget';
 import { SentryIssuesListWidget } from '@/lib/components/widgets/sentry-issue-list-widget';
 import { VercelDeploymentWidget } from '@/lib/components/widgets/vercel-deployment-widget';
+import { WidgetType } from '@/lib/config-schema';
 import { Widget } from '@/lib/types/widget';
 import { FC } from 'react';
 
-const map = {
+const map:Record<WidgetType, unknown> = {
   'my-pull-requests': MyPullRequestsWidget,
   'pull-requests-to-review': PullRequestsReviewWidget,
   'workflow-run': GithubWorkflowHistoryWidget,
@@ -38,6 +43,9 @@ const map = {
   'jira-sprint-gauge': JiraSprintGaugeWidget,
   'jira-issues-gauge': JiraIssuesGaugeWidget,
   'jira-stats-gauge': JiraStatsGaugeWidget,
+  'github-stats':GithubRepoStats,
+  'github-contributions':GithubContributions,
+  'github-contributor-stats':GithubContributorStats,
 };
 
 export const WidgetMounter: FC<{widget: Widget, dashboard: string}> = ({ widget, dashboard }) => {

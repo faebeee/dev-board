@@ -14,6 +14,9 @@ export const widgetTypes = [
   'vercel-deployments',
   'github-commits',
   'github-commits-charts',
+  'github-stats',
+  'github-contributions',
+  'github-contributor-stats',
   'sentry-errors',
   'sentry-issues',
   'github-branches',
@@ -70,7 +73,7 @@ const widgetSchema = object({
     otherwise: (schema) => schema.shape({})
   })
   .when('widget', {
-    is: (widget: string) => ['github-issues'].includes(widget),
+    is: (widget: string) => ['github-issues', 'github-stats', 'github-contributor-stats'].includes(widget),
     then: schema => schema.shape({
       title: string().required(),
       owner: string().required(),

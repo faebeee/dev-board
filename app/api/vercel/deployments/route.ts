@@ -10,7 +10,6 @@ export async function GET(request: NextRequest) {
   const widgetId = searchParams.get('widget');
 
   const config = await getWidgetConfig<VercelDeploymentWidget>(dashboardId, widgetId);
-    console.log(dashboardId, widgetId);
   if (!config) {
     return notFound();
   }
