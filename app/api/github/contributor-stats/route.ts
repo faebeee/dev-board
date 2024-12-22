@@ -1,6 +1,7 @@
 import { getWidgetConfig } from '@/lib/get-widget-config';
 import { getGithub } from '@/lib/gh';
 import { GithubCommitListWidget } from '@/lib/types/widget';
+import { isEmpty } from 'lodash';
 import { notFound } from 'next/navigation';
 import { NextRequest } from 'next/server';
 
@@ -18,6 +19,10 @@ export async function GET(request: NextRequest) {
     owner: config.config.owner,
     repo: config.config.repo,
   });
+
+  if (isEmpty(response.data)) {
+    return Response.json([]);
+  }
 
   const stats = response.data.reduce((newStats, userEntry) => {
     const work = userEntry.weeks.reduce((stats, week) => {
