@@ -1,21 +1,11 @@
 import { GithubCommit } from '@/app/api/github/commits/types';
+import { CHART_COLORS } from '@/lib/colors';
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/lib/components/ui/chart';
 import { FC } from 'react';
 import { Bar, BarChart, Legend, ResponsiveContainer, XAxis, YAxis } from 'recharts';
 
 type OrganizedResult = {date: string} & {[author: string]: number};
-const chartColors = [
-  '#A79C8E', // Muted Beige
-  '#8EAF9D', // Soft Sage Green
-  '#A0B9C6', // Muted Blue-Grey
-  '#D0A9A0', // Dusty Rose
-  '#E3CDAE', // Faded Sand
-  '#B9A1A8', // Mauve Grey
-  '#A3B4A2', // Muted Olive
-  '#C2B5A5', // Warm Taupe
-  '#9DA7B1', // Slate Blue
-  '#B9C6AE', // Pastel Moss
-];
+
 
 function getAllAuthors(commits: GithubCommit[]): string[] {
   // Use a Set to store unique author names
@@ -28,7 +18,7 @@ function getAllAuthors(commits: GithubCommit[]): string[] {
   }
 
   // Convert the Set to an array and return it
-  return Array.from(authorsSet);
+  return Array.from(authorsSet).sort();
 }
 
 
@@ -81,7 +71,7 @@ export const GithubCommitsChart: FC<{commits: GithubCommit[]}> = ({ commits }) =
         <YAxis allowDecimals={false}/>
         <ChartTooltip content={<ChartTooltipContent/>}/>
         {getAllAuthors(commits).map((name, index) =>
-          <Bar key={name} dataKey={name} stackId="a" fill={chartColors[index]}/>
+          <Bar key={name} dataKey={name} stackId="a" fill={CHART_COLORS[index % CHART_COLORS.length]}/>
         )}
       </BarChart>
     </ResponsiveContainer>
