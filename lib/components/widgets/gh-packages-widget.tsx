@@ -16,7 +16,7 @@ export const GhPackagesWidget: FC<{title: string} & BasicWidgetProps> = ({ title
     onNew={(newItems) => {
       toast(`${newItems?.length} new Issues`);
     }}>
-    {(commits) => (<Widget footer={<SiGithub/>} title={title}>
+    {(commits, isLoading) => (<Widget loading={isLoading} footer={<SiGithub/>} title={title}>
       <Timeline>
         {commits?.map((commit) => (<a target={'_blank'} key={commit.node_id} href={commit.html_url}>
           <div key={commit.node_id} className="mb-8 flex gap-2 items-center w-full right-timeline">

@@ -1,6 +1,7 @@
 'use client';
 
 import { Badge } from '@/lib/components/ui/badge';
+import { Widget } from '@/lib/components/widget';
 import { GeneralApiData } from '@/lib/components/widgets/general-api-data';
 import { BasicWidgetProps } from '@/lib/components/widgets/types';
 import { WorkflowItemStatus, WorkflowList } from '@/lib/components/workflows/workflow-list';
@@ -39,24 +40,26 @@ export const VercelDeploymentWidget: FC<{title: string} & BasicWidgetProps> = ({
 }) => {
   return <GeneralApiData<Deployments[]> endpoint={`/api/vercel/deployments?dashboard=${dashboard}&widget=${widget}`}
     identifier={'uid'}>
-    {(runs) => (<WorkflowList footer={<SiVercel/>} title={title}
-      runs={(runs ?? []).map((run) => ({
-        url: run.inspectorUrl!,
-        id: run.uid,
-        status: getStatus(run.state),
-        subtitle: run.meta?.githubCommitMessage,
-        title: run.name,
-        created_at: run.createdAt ? new Date(run.createdAt).toISOString() : undefined,
-        event: <>
-          <Badge variant="outline" className="flex items-center space-x-1">
-            <GitBranch className="w-3 h-3"/>
-            <span>{run.meta?.githubCommitRef}</span>
-          </Badge>
-          <Badge variant="outline" className="flex items-center space-x-1">
-            <User className="w-3 h-3"/>
-            <span>{run.creator.username}</span>
-          </Badge>
-        </>
-      }))}/>)}
+    {(runs, isLoading) => (<Widget title={title} footer={<SiVercel/>} loading={isLoading}>
+      <WorkflowList
+        runs={(runs ?? []).map((run) => ({
+          url: run.inspectorUrl!,
+          id: run.uid,
+          status: getStatus(run.state),
+          subtitle: run.meta?.githubCommitMessage,
+          title: run.name,
+          created_at: run.createdAt ? new Date(run.createdAt).toISOString() : undefined,
+          event: <>
+            <Badge variant="outline" className="flex items-center space-x-1">
+              <GitBranch className="w-3 h-3"/>
+              <span>{run.meta?.githubCommitRef}</span>
+            </Badge>
+            <Badge variant="outline" className="flex items-center space-x-1">
+              <User className="w-3 h-3"/>
+              <span>{run.creator.username}</span>
+            </Badge>
+          </>
+        }))}/>
+    </Widget>)}
   </GeneralApiData>;
 };

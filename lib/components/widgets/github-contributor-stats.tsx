@@ -12,7 +12,7 @@ export const GithubContributorStats: FC<BasicWidgetProps> = ({ title, dashboard,
   return <GeneralApiData<GithubRepoContributorStatsResponse>
     endpoint={`/api/github/contributor-stats?dashboard=${dashboard}&widget=${widget}`}
   >
-    {(stats) => (<Widget description={'Additions and removes per user'} footer={<SiGithub/>} title={title}>
+    {(stats, isLoading) => (<Widget loading={isLoading} description={'Additions and removes per user'} footer={<SiGithub/>} title={title}>
       <RadarChartWidget data={stats ?? []} categories={['add', 'remove']}/>
     </Widget>)}
   </GeneralApiData>;

@@ -19,7 +19,7 @@ export const JiraSprintGaugeWidget: FC<BasicWidgetProps & {categories: string[],
     endpoint={`/api/jira/sprint/gauge?dashboard=${dashboard}&widget=${widget}`}
     identifier={'key'}
   >
-    {(response) => (<Widget description={jql} footer={<SiJira/>} title={title}>
+    {(response, isLoading) => (<Widget loading={isLoading} description={jql} footer={<SiJira/>} title={title}>
       <GaugeWidget data={response ?? {}} categories={categories}/>
     </Widget>)}
   </GeneralApiData>;

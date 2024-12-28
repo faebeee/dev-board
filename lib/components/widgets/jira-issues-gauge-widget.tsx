@@ -13,7 +13,7 @@ export const JiraIssuesGaugeWidget: FC<BasicWidgetProps & {jql: string}> = ({ ti
     endpoint={`/api/jira/issues/gauge?dashboard=${dashboard}&widget=${widget}`}
     identifier={'key'}
   >
-    {(response) => (<Widget description={jql} footer={<SiJira/>} title={title}>
+    {(response, isLoading) => (<Widget loading={isLoading} description={jql} footer={<SiJira/>} title={title}>
       <GaugeWidget data={response ?? {}} categories={Object.keys(response ?? {}).sort()}/>
     </Widget>)}
   </GeneralApiData>;

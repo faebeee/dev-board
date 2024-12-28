@@ -1,6 +1,7 @@
 'use client';
 import { SentryError } from '@/app/api/sentry/events/types';
 import { Badge } from '@/lib/components/ui/badge';
+import { Widget } from '@/lib/components/widget';
 import { GeneralApiData } from '@/lib/components/widgets/general-api-data';
 import { BasicWidgetProps } from '@/lib/components/widgets/types';
 import { WorkflowItemStatus, WorkflowList } from '@/lib/components/workflows/workflow-list';
@@ -25,21 +26,22 @@ export const SentryErrorListWidget: FC<{title: string} & BasicWidgetProps> = ({ 
     onNew={(newItems) => {
       toast(`${newItems?.length} new error`);
     }}>
-    {(events) => (<WorkflowList footer={<SiSentry/>} title={title}
-      subtitle={`Total ${events?.length} events`}
-      runs={(events ?? []).map((event) => ({
-        url: event.id,
-        id: event.eventID,
-        status: getStatus(event['event.type']),
-        subtitle: event.title,
-        title: event.metadata.type,
-        created_at: event.dateCreated,
-        event: <>
-          <Badge variant="outline" className="flex items-center space-x-1">
-            <GitBranch className="w-3 h-3"/>
-            <span>{event.platform}</span>
-          </Badge>
-        </>
-      }))}/>)}
+    {(events) => (<Widget title={title} footer={<SiSentry/>} description={`Total ${events?.length} events`}>
+      <WorkflowList
+        runs={(events ?? []).map((event) => ({
+          url: event.id,
+          id: event.eventID,
+          status: getStatus(event['event.type']),
+          subtitle: event.title,
+          title: event.metadata.type,
+          created_at: event.dateCreated,
+          event: <>
+            <Badge variant="outline" className="flex items-center space-x-1">
+              <GitBranch className="w-3 h-3"/>
+              <span>{event.platform}</span>
+            </Badge>
+          </>
+        }))}/>
+    </Widget>)}
   </GeneralApiData>;
 };

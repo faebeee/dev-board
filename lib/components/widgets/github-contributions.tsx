@@ -12,8 +12,9 @@ export const GithubContributions: FC<BasicWidgetProps> = ({ title, dashboard, wi
   return <GeneralApiData<GithubRepoContributionsResponse>
     endpoint={`/api/github/contributions?dashboard=${dashboard}&widget=${widget}`}
   >
-    {(stats) => (<Widget description={'Total commits per user'} footer={<SiGithub/>} title={title}>
-      <RadarChartWidget data={stats ?? []} categories={['total']}/>
-    </Widget>)}
+    {(stats, isLoading) => (
+      <Widget loading={isLoading} description={'Total commits per user'} footer={<SiGithub/>} title={title}>
+        <RadarChartWidget data={stats ?? []} categories={['total']}/>
+      </Widget>)}
   </GeneralApiData>;
 };

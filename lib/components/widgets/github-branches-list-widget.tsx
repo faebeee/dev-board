@@ -15,7 +15,7 @@ export const GithubBranchesListWidget: FC<BasicWidgetProps> = ({ title, widget, 
     onNew={(newItems) => {
       toast(`${newItems?.length} new branch`);
     }}>
-    {(branches) => (<Widget footer={<SiGithub/>} title={title} description={`Total ${branches?.length} branches`}>
+    {(branches, isLoading) => (<Widget loading={isLoading} footer={<SiGithub/>} title={title} description={`Total ${branches?.length} branches`}>
       <BranchList branches={(branches ?? []).map((branch) => ({
         name: branch.name,
         url: branch._links.html,

@@ -1,6 +1,7 @@
 'use client';
 import { SentryIssue } from '@/app/api/sentry/issues/types';
 import { Badge } from '@/lib/components/ui/badge';
+import { Widget } from '@/lib/components/widget';
 import { GeneralApiData } from '@/lib/components/widgets/general-api-data';
 import { BasicWidgetProps } from '@/lib/components/widgets/types';
 import { WorkflowItemStatus, WorkflowList } from '@/lib/components/workflows/workflow-list';
@@ -25,31 +26,33 @@ export const SentryIssuesListWidget: FC<{title: string} & BasicWidgetProps> = ({
     onNew={(newItems) => {
       toast(`${newItems?.length} new error`);
     }}>
-    {(issues) => (<WorkflowList footer={<SiSentry/>} title={title}
-      subtitle={`Total ${issues?.length} issues`}
-      runs={(issues ?? []).map((issue) => ({
-        url: issue.permalink,
-        id: issue.id,
-        status: getStatus(issue.level),
-        subtitle: issue.metadata.value,
-        title: issue.title,
-        created_at: issue.lastSeen,
-        event: <>
-          <Badge variant="outline" className="flex items-center space-x-1">
-            <Server className="w-3 h-3"/>
-            <span>{issue.platform}</span>
-          </Badge>
+    {(issues, isLoading) => (
+      <Widget title={title} loading={isLoading} footer={<SiSentry/>} description={`Total ${issues?.length} issues`}>
+        <WorkflowList
+          runs={(issues ?? []).map((issue) => ({
+            url: issue.permalink,
+            id: issue.id,
+            status: getStatus(issue.level),
+            subtitle: issue.metadata.value,
+            title: issue.title,
+            created_at: issue.lastSeen,
+            event: <>
+              <Badge variant="outline" className="flex items-center space-x-1">
+                <Server className="w-3 h-3"/>
+                <span>{issue.platform}</span>
+              </Badge>
 
-          <Badge variant="outline" className="flex items-center space-x-1">
-            <Flag className="w-3 h-3"/>
-            <span>{issue.priority}</span>
-          </Badge>
+              <Badge variant="outline" className="flex items-center space-x-1">
+                <Flag className="w-3 h-3"/>
+                <span>{issue.priority}</span>
+              </Badge>
 
-          <Badge variant="outline" className="flex items-center space-x-1">
-            <Bug className="w-3 h-3"/>
-            <span>{issue.count}</span>
-          </Badge>
-        </>
-      }))}/>)}
+              <Badge variant="outline" className="flex items-center space-x-1">
+                <Bug className="w-3 h-3"/>
+                <span>{issue.count}</span>
+              </Badge>
+            </>
+          }))}/>
+      </Widget>)}
   </GeneralApiData>;
 };

@@ -15,7 +15,7 @@ export const GhCommitsChartWidget: FC<{title: string} & BasicWidgetProps> = ({ t
     onNew={(newItems) => {
       toast(`${newItems?.length} new Issues`);
     }}>
-    {(commits) => (<Widget footer={<SiGithub/>} title={title}>
+    {(commits, isLoading) => (<Widget loading={isLoading} footer={<SiGithub/>} title={title}>
       <GithubCommitsChart commits={commits ?? []}/>
     </Widget>)}
   </GeneralApiData>;

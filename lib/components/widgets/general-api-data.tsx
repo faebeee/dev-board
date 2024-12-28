@@ -9,10 +9,11 @@ export function GeneralApiData<T>({ children, endpoint, identifier, onNew, fetch
   endpoint: string,
   identifier?: string;
   onNew?: (data: T | null) => void;
-  children: (data: T | null) => JSX.Element,
+  children: (data: T | null, isLoading: boolean) => JSX.Element,
   fetchInit?: RequestInit;
 }) {
   const [data, setData] = useState<T | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const load = async () => {
     const response = await fetchApi(endpoint, fetchInit);
@@ -23,6 +24,7 @@ export function GeneralApiData<T>({ children, endpoint, identifier, onNew, fetch
         onNew?.(newData as T);
       }
     }
+    setIsLoading(false);
     setData(d);
   };
 
@@ -38,9 +40,5 @@ export function GeneralApiData<T>({ children, endpoint, identifier, onNew, fetch
     load();
   }, []);
 
-  if (!data || (Array.isArray(data) && data.length === 0)) {
-    return null;
-  }
-
-  return <>{children(data)}</>;
+  return <>{children(data, isLoading)}</>;
 }

@@ -12,7 +12,7 @@ export const GithubRepoStats: FC<BasicWidgetProps> = ({ title, dashboard, widget
   return <GeneralApiData<GithubRepoStatsResponseEntry[]>
     endpoint={`/api/github/stats?dashboard=${dashboard}&widget=${widget}`}
   >
-    {(stats) => (<Widget footer={<SiGithub/>} title={title}>
+    {(stats, isLoading) => (<Widget loading={isLoading} footer={<SiGithub/>} title={title}>
       <LineChartWidget data={stats ?? []}/>
     </Widget>)}
   </GeneralApiData>;
