@@ -18,7 +18,7 @@ export const JiraReleaseList: FC<{release: JiraRelease[], project: string}> = ({
         <Button
           key={release.id}
           variant="ghost"
-          className="w-full justify-between mb-2 h-auto py-2"
+          className="w-full justify-between bg-muted mb-2 h-auto py-2"
           asChild
         >
           <a

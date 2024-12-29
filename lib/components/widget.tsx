@@ -20,7 +20,7 @@ export const Widget: FC<PropsWithChildren<{
   return <Card className={'flex flex-col h-full'}>
     <CardHeader>
       <CardTitle>{title}</CardTitle>
-      {description && <CardDescription>{description}</CardDescription>}
+      <CardDescription>{description} &nbsp;</CardDescription>
     </CardHeader>
     <CardContent className={'relative flex-1'}>
       {loading && <>

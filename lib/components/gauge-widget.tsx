@@ -2,7 +2,7 @@ import { JiraSprintGaugeResponse } from '@/app/api/jira/sprint/gauge/types';
 import { CHART_COLORS } from '@/lib/colors';
 import { ChartContainer } from '@/lib/components/ui/chart';
 import React, { FC } from 'react';
-import { Cell, Legend, Pie, PieChart, ResponsiveContainer } from 'recharts';
+import { Cell, Legend, Pie, PieChart, ResponsiveContainer, Tooltip } from 'recharts';
 
 
 export const GaugeWidget: FC<{
@@ -39,6 +39,7 @@ export const GaugeWidget: FC<{
             ))}
           </Pie>
           <Legend/>
+          <Tooltip/>
         </PieChart>
       </ResponsiveContainer>
     </ChartContainer>

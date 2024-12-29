@@ -17,15 +17,20 @@ export function GeneralApiData<T>({ children, endpoint, identifier, onNew, fetch
 
   const load = async () => {
     const response = await fetchApi(endpoint, fetchInit);
-    const d = await response.json() as T;
-    if (data && Array.isArray(data) && Array.isArray(d) && identifier) {
-      const newData = differenceBy(d, data ?? [], identifier);
-      if (newData.length > 0) {
-        onNew?.(newData as T);
+    try {
+      const d = await response.json() as T;
+      if (data && Array.isArray(data) && Array.isArray(d) && identifier) {
+        const newData = differenceBy(d, data ?? [], identifier);
+        if (newData.length > 0) {
+          onNew?.(newData as T);
+        }
       }
+      setIsLoading(false);
+      setData(d);
+    }catch(e){
+      console.log(e);
+      console.log(response);
     }
-    setIsLoading(false);
-    setData(d);
   };
 
   useInterval(

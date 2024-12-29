@@ -92,11 +92,20 @@ export type JiraStatsGaugeWidget = Widget & {
   }
 }
 
+export type JiraSearchWidget = Widget & {
+  widget: 'jira-search'
+  config: {
+    title: string;
+    jql: string;
+    host: string
+  }
+}
+
 export type DashboardType = 'carousel' | 'grid'
 
 export type Dashboard = {
   title: string;
   id: string;
-  widgets: (Widget | JiraStatsGaugeWidget | JiraIssuesGaugeWidget | JiraGaugeWidget | GithubPackagesListWidget | VercelDeploymentWidget | SentryErrorsWidget | SentryIssuesWidget | GithubBranchListWidget)[]
+  widgets: (Widget | JiraSearchWidget | JiraStatsGaugeWidget | JiraIssuesGaugeWidget | JiraGaugeWidget | GithubPackagesListWidget | VercelDeploymentWidget | SentryErrorsWidget | SentryIssuesWidget | GithubBranchListWidget)[]
   type: DashboardType;
 }

@@ -21,6 +21,10 @@ export async function GET(request: NextRequest) {
   });
 
   const stats = response.data;
+  if (!Array.isArray(stats)) {
+    return Response.json([]);
+  }
+
   const statsPerWeekByUser = stats.reduce((newStats, userEntry) => {
     userEntry.weeks.forEach((week) => {
       newStats[week.w!] = {

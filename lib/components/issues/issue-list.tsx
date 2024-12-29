@@ -61,7 +61,7 @@ export const IssueList: FC<{issues: Issue[], title: ReactNode, footer?: ReactNod
           onMouseOut={() => jiraIssueHightlightContext.setActive(null)}
         >
           <li
-            className={clsx('flex items-center space-x-4 rounded-md border p-4 transition-opacity', {
+            className={clsx('flex items-center bg-muted space-x-4 rounded-md border p-4 transition-opacity', {
               ['opacity-25']: !!jiraIssueHightlightContext.active && jiraIssueHightlightContext.active !== task.key.toString(),
               ['opacity-1 bg-accent']: jiraIssueHightlightContext.active === task.key.toString(),
             })}>
@@ -70,7 +70,7 @@ export const IssueList: FC<{issues: Issue[], title: ReactNode, footer?: ReactNod
               name={task.assignee?.name ?? '?'}/>
             <div className="flex-1 min-w-0">
               <div className="flex items-center justify-between">
-                <p className="text-sm font-medium text-gray-900 truncate">
+                <p className="text-sm font-medium  truncate">
                   {task.summary}
                 </p>
                 {task.prio && getPriorityBadge(task.prio)}
