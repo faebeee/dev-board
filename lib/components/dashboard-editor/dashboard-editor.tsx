@@ -8,9 +8,10 @@ import { Widget } from '@/lib/components/widget';
 import { WidgetType } from '@/lib/config-schema';
 import { Dashboard, Widget as WidgetConfig } from '@/lib/types/widget';
 import { uniqueId } from 'lodash';
-import { FC, useMemo, useState } from 'react';
+import { FC, JSXElementConstructor, useMemo, useState } from 'react';
 
-const widgetMap: Record<WidgetType, () => JSX.Element> = {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const widgetMap: Record<WidgetType, JSXElementConstructor<any>> = {
   'jira-search': JiraSearchEditWidget
 };
 
@@ -47,7 +48,7 @@ export const DashboardEditor: FC<{config: Dashboard[]}> = ({  }) => {
     setWidgets(widgets.filter(widget => widget.id !== id));
   };
 
-  const updateWidget = (id: string, config: unknown) => {
+  const updateWidget = (id: string, config: object) => {
     setWidgets(widgets.map((widget) => {
       if (widget.id === id) {
         return {
@@ -67,7 +68,8 @@ export const DashboardEditor: FC<{config: Dashboard[]}> = ({  }) => {
     <div className={'grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3'}>
       {widgets.map((widget) => {
         const Component = widgetMap[widget.widget];
-        return <Component key={widget.id} {...widget}
+        return <Component
+          key={widget.id} {...widget}
           onRemove={removeWidget}
           onChange={updateWidget}/>;
       })}

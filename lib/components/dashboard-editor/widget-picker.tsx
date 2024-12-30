@@ -28,7 +28,7 @@ export const WidgetPicker: FC<WidgetPickerProps> = ({ onClose, onAdd }) => {
       </DrawerHeader>
 
       <div>
-        <Button onClick={() => onAdd('jira-search')}>
+        <Button onClick={() => onAdd?.('jira-search')}>
           <SiJira/>
           Jira Search
         </Button>
