@@ -1,34 +1,37 @@
+'use client';
+
 import { Input } from '@/components/ui/input';
 import { EditWidgetProps } from '@/lib/components/dashboard-editor/widgets/edit-widget';
 import { Button } from '@/lib/components/ui/button';
 import { Widget } from '@/lib/components/widget';
-import { JiraSearchWidget } from '@/lib/types/widget';
+import { GithubIssuesListWidget } from '@/lib/types/widget';
 import { FC, useState } from 'react';
 
-export const JiraSearchEditWidget: FC<EditWidgetProps<JiraSearchWidget['config']>> = ({
+export const GithubIssuesEditWidget: FC<EditWidgetProps<GithubIssuesListWidget['config']>> = ({
   id,
   onChange,
   onRemove
 }) => {
-  const [jql, setJql] = useState('');
+  const [owner, setOwner] = useState('');
   const [title, setTitle] = useState('');
-  const [host, setHost] = useState('');
+  const [repo, setRepo] = useState('');
 
   const onSave = () => {
     onChange(id, {
-      jql,
       title,
-      host
+      owner,
+      repo,
     });
   };
 
-  return <Widget title={'Jira Search'}>
+  return <Widget title={'Github Issues'}>
     <div className={'flex flex-col gap-4'}>
       <div className={'flex flex-col gap-2'}>
         <Input placeholder={'Title'} value={title} onChange={e => setTitle(e.target.value)}/>
-        <Input placeholder={'JQL'} value={jql} onChange={e => setJql(e.target.value)}/>
-        <Input placeholder={'XXX.atlassian.net'} value={host} onChange={e => setHost(e.target.value)}/>
+        <Input placeholder={'Owner'} value={owner} onChange={e => setOwner(e.target.value)}/>
+        <Input placeholder={'Repo'} value={repo} onChange={e => setRepo(e.target.value)}/>
       </div>
+
       <div className={'flex flex-row gap-2'}>
         <Button onClick={onSave}>Save</Button>
         <Button onClick={() => onRemove(id)} variant={'destructive'}>Remove</Button>

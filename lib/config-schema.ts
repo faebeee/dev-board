@@ -3,14 +3,15 @@ import { array, number, object, string } from 'yup';
 
 export const widgetTypes = [
   'jira-search',
-  'all-pull-requests',
   'jira-release-list',
+  'github-issues',
+
+  'all-pull-requests',
   'github-repo-events',
   'release-history',
   'my-pull-requests',
   'pull-requests-to-review',
   'workflow-run',
-  'github-issues',
   'vercel-deployments',
   'github-commits',
   'github-commits-charts',
