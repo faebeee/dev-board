@@ -14,7 +14,7 @@ export const JiraIssueSearch: FC<{title: string, jql: string, host: string}> = (
     onNew={(newItems) => {
       toast(`${newItems?.length} new Issues`);
     }}>
-    {(issues, isLoading) => (<Widget title={title} description={jql} loading={isLoading} footer={<SiJira/>}>
+    {(issues, isLoading) => (<Widget title={title} description={jql} loading={isLoading} footer={<SiJira/>} counter={issues?.length}>
       <IssueList issues={(issues ?? []).map((task) => ({
         url: `${host}/browse/${task.key}`,
         summary: task.fields.summary,

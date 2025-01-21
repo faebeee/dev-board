@@ -10,16 +10,18 @@ export const Widget: FC<PropsWithChildren<{
   loading?: boolean;
   footer?: ReactNode,
   description?: ReactNode
+  counter?: number
 }>> = ({
   children,
   title,
   footer,
   description,
   loading,
+  counter,
 }) => {
   return <Card className={'flex flex-col h-full'}>
     <CardHeader>
-      <CardTitle>{title}</CardTitle>
+      <CardTitle>{title} {counter && <span className={'text-sm text-gray-500'}>{counter}</span>}</CardTitle>
       {description && <CardDescription>{description}</CardDescription>}
     </CardHeader>
     <CardContent className={'relative flex-1'}>
