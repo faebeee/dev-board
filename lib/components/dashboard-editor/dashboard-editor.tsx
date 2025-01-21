@@ -3,7 +3,11 @@
 import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { WidgetPicker } from '@/lib/components/dashboard-editor/widget-picker';
+import {
+  GithubBranchesListEditWidget
+} from '@/lib/components/dashboard-editor/widgets/github-branches-list-edit-widget';
 import { GithubIssuesEditWidget } from '@/lib/components/dashboard-editor/widgets/github-issues-edit-widget';
+import { GithubStatsEditWidget } from '@/lib/components/dashboard-editor/widgets/github-stats-edit-widget';
 import { JiraReleaseListEditWidget } from '@/lib/components/dashboard-editor/widgets/jira-release-list-edit-widget';
 import { JiraSearchEditWidget } from '@/lib/components/dashboard-editor/widgets/jira-search-edit-widget';
 import { Button } from '@/lib/components/ui/button';
@@ -18,6 +22,8 @@ const widgetMap: Record<WidgetType, JSXElementConstructor<any>> = {
   'jira-search': JiraSearchEditWidget,
   'jira-release-list': JiraReleaseListEditWidget,
   'github-issues': GithubIssuesEditWidget,
+  'github-branches': GithubBranchesListEditWidget,
+  'github-stats': GithubStatsEditWidget,
 };
 
 export const DashboardEditor: FC<{config: Dashboard[]}> = ({}) => {

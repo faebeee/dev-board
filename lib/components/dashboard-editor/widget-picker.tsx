@@ -18,6 +18,11 @@ export type WidgetPickerProps = {
   onAdd?: (widget: WidgetType) => void;
 }
 
+const GROUPS: {title: string, widgets: WidgetType[]}[] = [
+  { title: 'Jira', widgets: ['jira-search', 'jira-release-list'] },
+  { title: 'Github', widgets: ['github-issues', 'github-branches', 'github-stats'] },
+];
+
 export const WidgetPicker: FC<WidgetPickerProps> = ({ onClose, onAdd }) => {
   return <Drawer direction={'right'} open={true}>
     <DrawerContent>
@@ -28,27 +33,18 @@ export const WidgetPicker: FC<WidgetPickerProps> = ({ onClose, onAdd }) => {
         </DrawerHeader>
 
         <div className="mx-auto px-4 flex flex-col gap-4">
-          <div className={'flex flex-col gap-2'}>
-            <p>Jira</p>
-            <div className={'flex flex-row flex-wrap gap-2'}>
-              <Button onClick={() => onAdd?.('jira-search')}>
-                JQL Result
-              </Button>
-
-              <Button onClick={() => onAdd?.('jira-release-list')}>
-                Release List
-              </Button>
+          {GROUPS.map((group) => (
+            <div key={group.title} className={'flex flex-col gap-2'}>
+              <p>{group.title}</p>
+              <div className={'flex flex-row flex-wrap gap-2'}>
+                {group.widgets.map((widget) => (
+                  <Button key={widget} onClick={() => onAdd?.(widget)}>
+                    {widget}
+                  </Button>
+                ))}
+              </div>
             </div>
-          </div>
-
-          <div className={'flex flex-col gap-2'}>
-            <p>Github</p>
-            <div className={'flex flex-row flex-wrap gap-2'}>
-              <Button onClick={() => onAdd?.('github-issues')}>
-                Issue List
-              </Button>
-            </div>
-          </div>
+          ))}
         </div>
 
         <DrawerFooter>

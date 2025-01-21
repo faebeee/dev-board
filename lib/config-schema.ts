@@ -5,6 +5,8 @@ export const widgetTypes = [
   'jira-search',
   'jira-release-list',
   'github-issues',
+  'github-branches',
+  'github-stats',
 
   'all-pull-requests',
   'github-repo-events',
@@ -15,12 +17,11 @@ export const widgetTypes = [
   'vercel-deployments',
   'github-commits',
   'github-commits-charts',
-  'github-stats',
+
   'github-contributions',
   'github-contributor-stats',
   'sentry-errors',
   'sentry-issues',
-  'github-branches',
   'github-packages',
   'jira-sprint-gauge',
   'jira-issues-gauge',
