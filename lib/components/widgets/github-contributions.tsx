@@ -7,7 +7,6 @@ import { SiGithub } from '@icons-pack/react-simple-icons';
 import { FC } from 'react';
 import { GeneralApiData } from './general-api-data';
 import { BasicWidgetProps } from './types';
-import exp from 'constants';
 
 export const GithubContributions: FC<BasicWidgetProps> = ({ title, dashboard, widget }) => {
   return <GeneralApiData<GithubRepoContributionsResponse>

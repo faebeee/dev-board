@@ -3,6 +3,7 @@ import { Widget } from '@/lib/types/widget';
 import React, { FC } from 'react';
 import { LoadingIndicator } from '../loading-indicator';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const map: Record<WidgetType, React.LazyExoticComponent<FC<any>>> = {
   'my-pull-requests': React.lazy(() => import('@/lib/components/widgets/my-pull-requests-widget')),
   'pull-requests-to-review': React.lazy(() => import('@/lib/components/widgets/pull-requests-review-widget')),
