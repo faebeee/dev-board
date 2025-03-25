@@ -24,3 +24,5 @@ export const GithubReleaseHistoryWidget: FC<GHBasicProps & {title: string}> = ({
     )}
   </GeneralApiData>;
 };
+
+export default GithubReleaseHistoryWidget;

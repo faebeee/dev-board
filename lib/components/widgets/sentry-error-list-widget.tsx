@@ -45,3 +45,5 @@ export const SentryErrorListWidget: FC<{title: string} & BasicWidgetProps> = ({ 
     </Widget>)}
   </GeneralApiData>;
 };
+
+export default SentryErrorListWidget;

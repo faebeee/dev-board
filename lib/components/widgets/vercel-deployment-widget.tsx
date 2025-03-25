@@ -63,3 +63,5 @@ export const VercelDeploymentWidget: FC<{title: string} & BasicWidgetProps> = ({
     </Widget>)}
   </GeneralApiData>;
 };
+
+export default VercelDeploymentWidget;

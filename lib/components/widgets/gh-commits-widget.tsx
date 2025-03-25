@@ -42,3 +42,5 @@ export const GhRepoCommitsWidget: FC<{title: string} & BasicWidgetProps> = ({ ti
     </Widget>)}
   </GeneralApiData>;
 };
+
+export default GhRepoCommitsWidget;

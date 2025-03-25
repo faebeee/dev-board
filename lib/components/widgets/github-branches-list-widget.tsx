@@ -31,3 +31,5 @@ export const GithubBranchesListWidget: FC<BasicWidgetProps> = ({ title, widget, 
     </Widget>)}
   </GeneralApiData>;
 };
+
+export default GithubBranchesListWidget;

@@ -56,3 +56,5 @@ export const SentryIssuesListWidget: FC<{title: string} & BasicWidgetProps> = ({
       </Widget>)}
   </GeneralApiData>;
 };
+
+export default SentryIssuesListWidget;

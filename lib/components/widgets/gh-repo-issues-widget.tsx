@@ -44,3 +44,5 @@ export const GhRepoIssuesWidget: FC<{title: string} & GHBasicProps> = ({ title, 
     </Widget>)}
   </GeneralApiData>;
 };
+
+export default GhRepoIssuesWidget;

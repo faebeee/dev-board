@@ -28,3 +28,5 @@ export const GithubRepoEventsWidget: FC<{title: string} & GHBasicProps> = ({ tit
     </Widget>)}
   </GeneralApiData>;
 };
+
+export default GithubRepoEventsWidget;

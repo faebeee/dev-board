@@ -30,3 +30,5 @@ export const AllPullRequestsWidget: FC<{title: string} & GHBasicProps> = ({ titl
     )}
   </GeneralApiData>;
 };
+
+export default AllPullRequestsWidget;

@@ -28,3 +28,5 @@ export const JiraIssueSearch: FC<{title: string, jql: string, host: string}> = (
     </Widget>)}
   </GeneralApiData>;
 };
+
+export default JiraIssueSearch

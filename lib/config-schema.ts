@@ -10,6 +10,7 @@ export const widgetTypes = [
   'my-pull-requests',
   'pull-requests-to-review',
   'workflow-run',
+  'workflow-table',
   'github-issues',
   'vercel-deployments',
   'github-commits',

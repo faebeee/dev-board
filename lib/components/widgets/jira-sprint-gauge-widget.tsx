@@ -24,3 +24,5 @@ export const JiraSprintGaugeWidget: FC<BasicWidgetProps & {categories: string[],
     </Widget>)}
   </GeneralApiData>;
 };
+
+export default JiraSprintGaugeWidget;

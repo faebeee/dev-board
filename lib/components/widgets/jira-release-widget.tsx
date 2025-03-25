@@ -19,3 +19,5 @@ export const JiraReleaseWidget: FC<{title: string, project: string}> = ({ title,
       </Widget>)}
   </GeneralApiData>;
 };
+
+export default JiraReleaseWidget;

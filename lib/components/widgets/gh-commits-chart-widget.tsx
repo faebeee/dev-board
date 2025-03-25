@@ -20,3 +20,5 @@ export const GhCommitsChartWidget: FC<{title: string} & BasicWidgetProps> = ({ t
     </Widget>)}
   </GeneralApiData>;
 };
+
+export default GhCommitsChartWidget;

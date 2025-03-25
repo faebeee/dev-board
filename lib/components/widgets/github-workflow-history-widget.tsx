@@ -65,3 +65,5 @@ export const GithubWorkflowHistoryWidget: FC<GHBasicProps & {title: string}> = (
     </Widget>)}
   </GeneralApiData>;
 };
+
+export default GithubWorkflowHistoryWidget;

@@ -17,3 +17,4 @@ export const GithubRepoStats: FC<BasicWidgetProps> = ({ title, dashboard, widget
     </Widget>)}
   </GeneralApiData>;
 };
+export default GithubRepoStats;

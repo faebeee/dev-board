@@ -26,3 +26,4 @@ export const MyPullRequestsWidget: FC<{title: string} & GHBasicProps> = ({ title
     </Widget>)}
   </GeneralApiData>;
 };
+export default MyPullRequestsWidget;

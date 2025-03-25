@@ -26,3 +26,5 @@ export const PullRequestsReviewWidget: FC<{title: string} & GHBasicProps> = ({ t
     </Widget>)}
   </GeneralApiData>;
 };
+
+export default PullRequestsReviewWidget;

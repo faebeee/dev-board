@@ -7,6 +7,7 @@ import { SiGithub } from '@icons-pack/react-simple-icons';
 import { FC } from 'react';
 import { GeneralApiData } from './general-api-data';
 import { BasicWidgetProps } from './types';
+import { exportPages } from 'next/dist/export/worker';
 
 export const GithubContributorStats: FC<BasicWidgetProps> = ({ title, dashboard, widget }) => {
   return <GeneralApiData<GithubRepoContributorStatsResponse>
@@ -17,3 +18,5 @@ export const GithubContributorStats: FC<BasicWidgetProps> = ({ title, dashboard,
     </Widget>)}
   </GeneralApiData>;
 };
+
+export default GithubContributorStats;

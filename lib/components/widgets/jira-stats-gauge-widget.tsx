@@ -18,3 +18,5 @@ export const JiraStatsGaugeWidget: FC<BasicWidgetProps & {jql: string}> = ({ tit
     </Widget>)}
   </GeneralApiData>;
 };
+
+export default JiraStatsGaugeWidget;
